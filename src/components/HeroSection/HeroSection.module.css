@@ -1,0 +1,175 @@
+/* TAREA: Reemplazar la paleta de colores y estilos actuales por los definidos en el briefing para proyectar una imagen premium y de confianza. */
+
+/* 1. **Corregir el Fondo Principal:**
+   - El contenedor principal (ej: .heroContainer) debe tener un fondo de color sólido, no un gradiente lavanda.
+   - Usar el color primario: Azul Oscuro Profundo (#0D1B2A).
+   - El color del texto principal debe ser Blanco (#FFFFFF).
+*/
+.heroContainer {
+  background-color: #0D1B2A !important; /* forzar color primario */
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  padding: 72px 20px;
+  min-height: 68vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(13,27,42,0.35);
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+/* Helper override class in case the parent applies background */
+.heroContainerOverride {
+  background-color: #0D1B2A !important;
+}
+
+/* 2. **Corregir Estilos de Botones:**
+   - Eliminar el efecto translúcido ("glassmorphism"). Los botones deben ser sólidos y de alto contraste.
+*/
+
+/* Botón Primario (CTA Principal):  
+   - Fondo: Turquesa Vibrante (#00F5D4).
+   - Texto: Azul Oscuro Profundo (#0D1B2A).
+   - Quitar cualquier borde translúcido.
+*/
+.ctaPrimary {
+  background-color: #00F5D4;
+  color: #0D1B2A;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,245,212,0.12);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.ctaPrimary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 34px rgba(0,245,212,0.18);
+}
+.ctaPrimary:focus {
+  outline: 3px solid rgba(0,245,212,0.16);
+  outline-offset: 3px;
+}
+
+/* Botón Secundario: outline turquesa */
+.ctaSecondary {
+  background-color: transparent;
+  border: 2px solid #00F5D4;
+  color: #00F5D4;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .16s ease, transform .16s ease;
+}
+.ctaSecondary:hover {
+  background: rgba(0,245,212,0.06);
+  transform: translateY(-2px);
+}
+.ctaSecondary:focus {
+  outline: 3px solid rgba(0,245,212,0.12);
+  outline-offset: 3px;
+}
+
+.heroGrid {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 32px;
+  align-items: center;
+}
+
+.heroContent {
+  max-width: 680px;
+}
+
+.heroTitle {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.02;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.heroSubtitle {
+  margin: 0;
+  color: rgba(255,255,255,0.92);
+  font-size: 1.05rem;
+}
+
+.heroActions {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.heroFeatures {
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: rgba(255,255,255,0.92);
+}
+.heroFeatures li {
+  list-style: none;
+  background: rgba(255,255,255,0.04);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.heroVisual {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.heroVisual img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  filter: brightness(.86) contrast(.98);
+  transition: filter .35s ease;
+  /* Degradado suave en los bordes para integrar con el fondo */
+  -webkit-mask-image: radial-gradient(ellipse at center, black 78%, transparent 100%);
+  mask-image: radial-gradient(ellipse at center, black 78%, transparent 100%);
+}
+
+/* Variante menos intensa en pantallas pequeñas */
+@media (max-width: 600px) {
+  .heroVisual img {
+    height: 240px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 85%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, black 85%, transparent 100%);
+  }
+}
+
+@media (max-width: 1000px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+  .heroVisual img {
+    height: 260px;
+  }
+  .heroContainer {
+    padding: 48px 18px;
+    min-height: auto;
+  }
+}
+
+/* Accessibility helper */
+.srOnly {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}

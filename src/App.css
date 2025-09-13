@@ -1,3 +1,10 @@
+/* TAREA: Reemplazar la paleta de colores y estilos actuales por los definidos en el briefing para proyectar una imagen premium y de confianza. */
+
+/* 1. **Corregir el Fondo Principal:**
+   - El contenedor principal (ej: .heroContainer) debe tener un fondo de color sólido, no un gradiente lavanda.
+   - Usar el color primario: Azul Oscuro Profundo (#0D1B2A).
+   - El color del texto principal debe ser Blanco (#FFFFFF).
+*/
 /* Design tokens */
 :root {
   --color-bg: #0f1115;
@@ -68,6 +75,7 @@ a:hover {
   color: transparent;
   letter-spacing: -.5px;
   text-align: center;
+  background-clip: text;
 }
 
 .App-section p {
@@ -149,6 +157,7 @@ a:hover {
   -webkit-background-clip: text;
   color: transparent;
   filter: drop-shadow(0 4px 22px rgba(99,102,241,.25));
+  background-clip: text;
 }
 
 .App-header p {
@@ -161,6 +170,8 @@ a:hover {
 .hero {
   padding-top: 48px;
   padding-bottom: 64px;
+  background: var(--color-primary) !important;
+  color: #ffffff;
 }
 
 .hero-grid {
@@ -181,6 +192,12 @@ a:hover {
   object-fit: cover;
   border-radius: 12px;
   box-shadow: var(--shadow-md);
+  filter: brightness(.86) contrast(.98);
+  transition: filter .35s ease;
+}
+
+.hero-visual img:hover {
+  filter: brightness(.9) contrast(1);
 }
 
 .hero-features {
@@ -222,8 +239,8 @@ a:hover {
 .cta-btn {
   display: inline-block;
   margin-top: 6px;
-  background: var(--color-gradient);
-  color: #fff;
+  background: var(--color-accent);
+  color: var(--color-primary);
   font-weight: 600;
   padding: 14px 34px;
   border-radius: var(--radius-pill);
@@ -434,6 +451,9 @@ a:hover {
   position: relative;
   overflow: hidden;
   transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .equipo-card:after {
@@ -443,6 +463,9 @@ a:hover {
   background: radial-gradient(circle at 80% 20%, rgba(236,72,153,.25), transparent 60%);
   opacity: 0;
   transition: var(--transition-fast);
+  /* Evita que el pseudo-elemento bloquee clicks */
+  pointer-events: none;
+  z-index: 0;
 }
 
 .equipo-card:hover {
@@ -451,8 +474,73 @@ a:hover {
   box-shadow: var(--shadow-md);
 }
 
-.equipo-card:hover:after {
-  opacity: 1;
+/* Aseguramos que los links estén por encima del pseudo-elemento */
+.equipo-links .equipo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background .18s ease, color .18s ease, transform .12s ease;
+  position: relative;
+  z-index: 2;
+}
+.equipo-links .equipo-link:hover {
+  background: rgba(0,245,212,0.09);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+.equipo-links .equipo-link:focus {
+  outline: 3px solid rgba(0,245,212,0.12);
+  outline-offset: 2px;
+}
+
+.equipo-card h4 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.equipo-role {
+  font-size: .85rem;
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.equipo-bio {
+  margin: 0 0 8px;
+  font-size: .9rem;
+  color: var(--color-text);
+}
+
+.equipo-links .equipo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background .18s ease, color .18s ease, transform .12s ease;
+  position: relative;
+  z-index: 2;
+}
+.equipo-links .equipo-link:hover {
+  background: rgba(0,245,212,0.09);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+.equipo-links .equipo-link:focus {
+  outline: 3px solid rgba(0,245,212,0.12);
+  outline-offset: 2px;
 }
 
 .equipo-card h4 {
@@ -533,8 +621,8 @@ a:hover {
   font-size: .75rem;
   letter-spacing: .6px;
   color: #6b7687;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.03) 100%);
-  border-top: 1px solid var(--color-border);
+  background: var(--color-primary);
+  border-top: none;
 }
 
 /* Utilities & Animations */
