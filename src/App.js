@@ -260,7 +260,7 @@ function App() {
               {status === 'sending' ? 'Enviando...' : 'Enviar Mensaje'}
             </button>
             <a className="App-link" href="https://calendly.com/your-calendly" target="_blank" rel="noreferrer" onClick={openCalendly}>Agenda una reunión</a>
-            <a className="App-link" href="mailto:info@tuempresa.com">info@tuempresa.com</a>
+            <a className="App-link" href="mailto:contacto@spore.com">info@tuempresa.com</a>
           </div>
 
           {status === 'success' && <div style={{ color: 'var(--color-primary)', marginTop: 8 }}>Gracias — recibimos tu mensaje. Te contactaremos pronto.</div>}
