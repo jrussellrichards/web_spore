@@ -9,26 +9,75 @@ import Footer from './components/Footer/Footer';
 function App() {
   const [form, setForm] = useState({ name: '', company: '', email: '', message: '' });
   const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+  const [menuOpen, setMenuOpen] = useState(false); // estado para menú móvil
 
   useEffect(() => {
-    const nav = document.querySelector('nav');
-    const links = Array.from(document.querySelectorAll('a[href^="#"]'));
-    const clickHandler = (e) => {
-      const href = e.currentTarget.getAttribute('href');
-      if (!href || !href.startsWith('#')) return;
-      const target = document.querySelector(href);
-      if (!target) return;
-      e.preventDefault();
-      const navHeight = nav ? nav.offsetHeight : 0;
-      const offset = navHeight + 16;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-      if (window.history && window.history.pushState) window.history.pushState(null, '', href);
-      else window.location.hash = href;
+    // Esta función crea un manejador de scroll personalizado para todos los enlaces con anclas
+    const setupSmoothScrolling = () => {
+      const nav = document.querySelector('nav');
+      const links = Array.from(document.querySelectorAll('a[href^="#"]'));
+      
+      const handleSmoothScroll = (e) => {
+        const href = e.currentTarget.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        
+        const targetSection = document.querySelector(href);
+        if (!targetSection) return;
+        
+        e.preventDefault();
+        
+        const navHeight = nav ? nav.offsetHeight : 0;
+        const offset = navHeight + 16;
+        const top = targetSection.getBoundingClientRect().top + window.scrollY - offset;
+        
+        window.scrollTo({
+          top,
+          behavior: 'smooth'
+        });
+        
+        if (window.history && window.history.pushState) {
+          window.history.pushState(null, '', href);
+        } else {
+          window.location.hash = href;
+        }
+        
+        // Asegurar que el scroll no esté bloqueado
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+      };
+      
+      // Agregar event listeners a todos los enlaces de ancla
+      links.forEach(link => {
+        // Eliminar listeners anteriores para evitar duplicados
+        link.removeEventListener('click', handleSmoothScroll);
+        // Agregar nuevo listener
+        link.addEventListener('click', handleSmoothScroll);
+      });
+      
+      return () => {
+        // Cleanup: remover todos los event listeners
+        links.forEach(link => {
+          link.removeEventListener('click', handleSmoothScroll);
+        });
+      };
     };
-
-    links.forEach(l => l.addEventListener('click', clickHandler));
-    return () => links.forEach(l => l.removeEventListener('click', clickHandler));
+    
+    // Configurar scroll suave
+    const cleanupFunction = setupSmoothScrolling();
+    
+    // Asegurar que el scroll funcione al cargar la página
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    
+    // Reconfigurar scroll suave cuando cambie el DOM (por ejemplo, cuando se abre/cierra el menú móvil)
+    window.addEventListener('DOMContentLoaded', setupSmoothScrolling);
+    window.addEventListener('resize', setupSmoothScrolling);
+    
+    return () => {
+      if (cleanupFunction) cleanupFunction();
+      window.removeEventListener('DOMContentLoaded', setupSmoothScrolling);
+      window.removeEventListener('resize', setupSmoothScrolling);
+    };
   }, []);
 
   const handleChange = (e) => {
@@ -36,7 +85,7 @@ function App() {
     setForm(prev => ({ ...prev, [name]: value }));
   };
 
-  async function handleSubmit(e) {
+      async function handleSubmit(e) {
     e.preventDefault();
     // simple client validation
     if (!form.name || !form.email || !form.message) {
@@ -46,6 +95,7 @@ function App() {
     setStatus('sending');
     try {
       // Replace with your Formspree endpoint or your API
+      // For production, use Netlify Forms, HubSpot, or your backend API
       const res = await fetch('https://formspree.io/f/{your-id}', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -66,7 +116,12 @@ function App() {
     } catch (err) {
       setStatus('error');
     } finally {
-      setTimeout(() => setStatus('idle'), 4000);
+      setTimeout(() => {
+        setStatus('idle');
+        // Asegurar que el scroll funcione después de enviar el formulario
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+      }, 4000);
     }
   }
 
@@ -78,32 +133,240 @@ function App() {
     } else {
       window.open(url, '_blank', 'noopener');
     }
+    
+    // Asegurarse de que el scroll siga funcionando después de abrir/cerrar Calendly
+    setTimeout(() => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }, 500);
   }
 
   return (
     <div className="App">
-      <nav className="App-header top-nav" style={{ minHeight: 'auto', padding: '12px 28px' }}>
+      <nav className="top-nav" style={{ 
+        minHeight: 'auto', 
+        padding: '12px 28px',
+        background: 'var(--color-primary)',
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
+        borderBottom: '1px solid rgba(255,255,255,0.04)'
+      }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, width: '100%', maxWidth: '1180px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <img src={logo} alt="logo" style={{ width: 70, height: 70, borderRadius: 8 }} />
             <div style={{ textAlign: 'left' }}>
-              <strong style={{ display: 'block' }}>Spore</strong>
-              <small style={{ color: 'var(--color-text-soft)' }}>No vendemos IA. Creamos tu Próxima Ventaja Competitiva.</small>
+              <strong style={{ display: 'block', color: '#FFFFFF' }}>Spore</strong>
+              <small style={{ color: 'rgba(255,255,255,0.9)' }}>No vendemos IA. Creamos tu Próxima Ventaja Competitiva.</small>
             </div>
           </div>
 
           <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-            <a href="#servicios" style={{ color: 'var(--color-text-soft)' }}>Servicios</a>
-            <a href="#casos" style={{ color: 'var(--color-text-soft)' }}>Casos</a>
-            <a href="#nosotros" style={{ color: 'var(--color-text-soft)' }}>Nosotros</a>
-            <a href="#recursos" style={{ color: 'var(--color-text-soft)' }}>Recursos</a>
-            <a href="#contacto" className="cta-btn" onClick={openCalendly}>Agendar Consultoría Estratégica</a>
+            <a href="#servicios" onClick={(e) => {
+              e.preventDefault();
+              const serviciosSection = document.getElementById('servicios');
+              if (serviciosSection) {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                const offset = navHeight + 16;
+                const top = serviciosSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, '', '#servicios');
+                }
+              }
+              document.body.style.overflow = '';
+              document.documentElement.style.overflow = '';
+            }} style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'none' }}>Servicios</a>
+            
+            <a href="#casos" onClick={(e) => {
+              e.preventDefault();
+              const casosSection = document.getElementById('casos');
+              if (casosSection) {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                const offset = navHeight + 16;
+                const top = casosSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, '', '#casos');
+                }
+              }
+              document.body.style.overflow = '';
+              document.documentElement.style.overflow = '';
+            }} style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'none' }}>Casos</a>
+            
+            <a href="#nosotros" onClick={(e) => {
+              e.preventDefault();
+              const nosotrosSection = document.getElementById('nosotros');
+              if (nosotrosSection) {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                const offset = navHeight + 16;
+                const top = nosotrosSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, '', '#nosotros');
+                }
+              }
+              document.body.style.overflow = '';
+              document.documentElement.style.overflow = '';
+            }} style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'none' }}>Nosotros</a>
+            
+            <a href="#recursos" onClick={(e) => {
+              e.preventDefault();
+              const recursosSection = document.getElementById('recursos');
+              if (recursosSection) {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                const offset = navHeight + 16;
+                const top = recursosSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, '', '#recursos');
+                }
+              }
+              document.body.style.overflow = '';
+              document.documentElement.style.overflow = '';
+            }} style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'none' }}>Recursos</a>
+            
+            <a href="#contacto" className="cta-btn" onClick={(e) => {
+              e.preventDefault();
+              // Navegar manualmente al contacto con scroll suave
+              const contactoSection = document.getElementById('contacto');
+              if (contactoSection) {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                const offset = navHeight + 16;
+                const top = contactoSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, '', '#contacto');
+                }
+              }
+              // Asegurar que el scroll esté habilitado
+              document.body.style.overflow = '';
+              document.documentElement.style.overflow = '';
+            }}>Agendar Consultoría Estratégica</a>
           </div>
-        </div>
-      </nav>
 
+          {/* Menú hamburguesa para móvil */}
+          <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu" style={{ 
+            display: 'none', 
+            background: 'transparent',
+            border: 'none',
+            color: '#FFFFFF',
+            fontSize: '1.5rem',
+            cursor: 'pointer',
+            '@media (max-width: 780px)': {
+              display: 'block'
+            }
+          }}>
+            ☰
+          </button>
+        </div>
+
+        {menuOpen && (
+          <div className="mobile-menu" style={{
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            background: 'var(--color-primary)',
+            padding: '16px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+            zIndex: 50,
+            borderTop: '1px solid rgba(255,255,255,0.06)'
+          }}>
+            <a href="#servicios" onClick={(e) => {
+              e.preventDefault();
+              setMenuOpen(false);
+              const serviciosSection = document.querySelector('#servicios');
+              if (serviciosSection) {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                const offset = navHeight + 16;
+                const top = serviciosSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, '', '#servicios');
+                }
+              }
+              document.body.style.overflow = '';
+              document.documentElement.style.overflow = '';
+            }} style={{ color: '#FFFFFF', padding: '10px', textDecoration: 'none' }}>Servicios</a>
+            
+            <a href="#casos" onClick={(e) => {
+              e.preventDefault();
+              setMenuOpen(false);
+              const casosSection = document.querySelector('#casos');
+              if (casosSection) {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                const offset = navHeight + 16;
+                const top = casosSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, '', '#casos');
+                }
+              }
+              document.body.style.overflow = '';
+              document.documentElement.style.overflow = '';
+            }} style={{ color: '#FFFFFF', padding: '10px', textDecoration: 'none' }}>Casos</a>
+            
+            <a href="#nosotros" onClick={(e) => {
+              e.preventDefault();
+              setMenuOpen(false);
+              const nosotrosSection = document.querySelector('#nosotros');
+              if (nosotrosSection) {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                const offset = navHeight + 16;
+                const top = nosotrosSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, '', '#nosotros');
+                }
+              }
+              document.body.style.overflow = '';
+              document.documentElement.style.overflow = '';
+            }} style={{ color: '#FFFFFF', padding: '10px', textDecoration: 'none' }}>Nosotros</a>
+            
+            <a href="#recursos" onClick={(e) => {
+              e.preventDefault();
+              setMenuOpen(false);
+              const recursosSection = document.querySelector('#recursos');
+              if (recursosSection) {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                const offset = navHeight + 16;
+                const top = recursosSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, '', '#recursos');
+                }
+              }
+              document.body.style.overflow = '';
+              document.documentElement.style.overflow = '';
+            }} style={{ color: '#FFFFFF', padding: '10px', textDecoration: 'none' }}>Recursos</a>
+            
+            <a href="#contacto" className="cta-btn" onClick={(e) => {
+              e.preventDefault();
+              setMenuOpen(false);
+              const contactoSection = document.querySelector('#contacto');
+              if (contactoSection) {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                const offset = navHeight + 16;
+                const top = contactoSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, '', '#contacto');
+                }
+              }
+              document.body.style.overflow = '';
+              document.documentElement.style.overflow = '';
+            }}>Agendar Consultoría Estratégica</a>
+          </div>
+        )}
+      </nav>
+      
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection openCalendly={openCalendly} />
 
       {/* Problema / Solución */}
       <section className="App-section">
@@ -120,27 +383,39 @@ function App() {
           <div className="servicio-card">
             <h3>Crecimiento y Clientes</h3>
             <p>Modelos predictivos y segmentación para retener clientes, mejorar conversión y optimizar campañas comerciales.</p>
-            <a className="App-link" href="#casos" style={{ marginTop: 8 }}>Ver caso de éxito relacionado</a>
+            <a className="App-link" href="#casos" style={{ marginTop: 12, color: 'var(--color-accent)', backgroundColor: 'rgba(0,245,212,0.08)' }}>Ver caso de éxito relacionado</a>
           </div>
           <div className="servicio-card">
             <h3>Eficiencia y Costos</h3>
             <p>Optimización de procesos con IA y automatización para reducir costos operativos y mejorar la utilización de recursos.</p>
-            <a className="App-link" href="#contacto" style={{ marginTop: 8 }}>Solicitar más información</a>
+            <a className="App-link" href="#contacto" style={{ marginTop: 12, color: 'var(--color-accent)', backgroundColor: 'rgba(0,245,212,0.08)' }}>Solicitar más información</a>
           </div>
           <div className="servicio-card">
             <h3>Estrategia y Visión</h3>
             <p>Consultoría estratégica de datos: evaluación de madurez, hoja de ruta y gobernanza para asegurar ROI y escalabilidad.</p>
-            <a className="App-link" href="#contacto" style={{ marginTop: 8 }}>Agenda una llamada</a>
+            <a className="App-link" href="#contacto" style={{ marginTop: 12, color: 'var(--color-accent)', backgroundColor: 'rgba(0,245,212,0.08)' }}>Agenda una llamada</a>
           </div>
          </div>
 
          <div style={{ textAlign: 'center', marginTop: 26 }}>
-          <a href="#servicios" className="cta-btn">Ver todas las soluciones</a>
+          <a href="#servicios" className="cta-btn" onClick={(e) => {
+            e.preventDefault();
+            const serviciosSection = document.querySelector('#servicios');
+            if (serviciosSection) {
+              const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+              const offset = navHeight + 16;
+              const top = serviciosSection.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top, behavior: 'smooth' });
+              if (window.history && window.history.pushState) {
+                window.history.pushState(null, '', '#servicios');
+              }
+            }
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+          }}>Ver todas las soluciones</a>
          </div>
          </div>
        </section>
-
-       <div className="section-divider" />
 
        {/* Proceso */}
        <section className="App-section" id="servicios">
@@ -163,12 +438,25 @@ function App() {
         </div>
 
         <div style={{ textAlign: 'center', marginTop: 22 }}>
-          <a href="#contacto" className="cta-btn" onClick={openCalendly}>Conoce nuestro Framework</a>
+          <a href="#contacto" className="cta-btn" onClick={(e) => {
+            e.preventDefault();
+            const contactoSection = document.querySelector('#contacto');
+            if (contactoSection) {
+              const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+              const offset = navHeight + 16;
+              const top = contactoSection.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top, behavior: 'smooth' });
+              if (window.history && window.history.pushState) {
+                window.history.pushState(null, '', '#contacto');
+              }
+            }
+            // Asegurar que el scroll esté habilitado
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+          }}>Conoce nuestro Framework</a>
         </div>
          </div>
        </section>
-
-      <div className="section-divider" />
 
       {/* Caso de éxito destacado */}
       <section className="App-section" id="casos">
@@ -211,9 +499,9 @@ function App() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      {/* Sección AboutUs - Reincorporar componente */}
+      <AboutUs />
 
-      <AboutUs/>
       {/* Recursos / Blog */}
       <section className="App-section" id="recursos">
         <div className="container">
@@ -224,12 +512,12 @@ function App() {
           <div className="servicio-card">
             <h3>¿Cómo empezar con IA en tu empresa?</h3>
             <p>Guía práctica para priorizar casos de uso y obtener rápido valor.</p>
-            <a className="App-link" href="#recursos">Leer artículo</a>
+            <a className="App-link" href="#recursos" style={{ marginTop: 12, color: 'var(--color-accent)', backgroundColor: 'rgba(0,245,212,0.08)' }}>Leer artículo</a>
           </div>
           <div className="servicio-card">
             <h3>5 formas de usar tus datos para vender más</h3>
             <p>Estrategias aplicables para equipos comerciales y marketing.</p>
-            <a className="App-link" href="#recursos">Leer artículo</a>
+            <a className="App-link" href="#recursos" style={{ marginTop: 12, color: 'var(--color-accent)', backgroundColor: 'rgba(0,245,212,0.08)' }}>Leer artículo</a>
           </div>
         </div>
 
@@ -242,8 +530,6 @@ function App() {
         </div>
       </section>
 
-      <div className="section-divider" />
-
       {/* Contacto */}
       <section className="App-section contacto" id="contacto">
         <div className="container">
@@ -255,12 +541,18 @@ function App() {
           <input type="text" name="company" placeholder="Empresa" value={form.company} onChange={handleChange} />
           <input type="email" name="email" placeholder="Correo electrónico" required value={form.email} onChange={handleChange} />
           <textarea name="message" placeholder="Mensaje / ¿Qué objetivo quieres alcanzar?" required value={form.message} onChange={handleChange} />
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-            <button type="submit" className="cta-btn" disabled={status === 'sending'}>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+            <button type="submit" className="cta-btn" disabled={status === 'sending'} onClick={() => {
+              // Asegurar que el scroll siga funcionando después de enviar el formulario
+              setTimeout(() => {
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+              }, 100);
+            }}>
               {status === 'sending' ? 'Enviando...' : 'Enviar Mensaje'}
             </button>
-            <a className="App-link" href="https://calendly.com/your-calendly" target="_blank" rel="noreferrer" onClick={openCalendly}>Agenda una reunión</a>
-            <a className="App-link" href="mailto:contacto@spore.com">info@tuempresa.com</a>
+            <a className="App-link" href="https://calendly.com/your-calendly" target="_blank" rel="noreferrer" onClick={openCalendly} style={{ color: 'var(--color-accent)', backgroundColor: 'rgba(0,245,212,0.08)' }}>Agenda una reunión</a>
+            <a className="App-link" href="mailto:contacto@spore.com" style={{ color: 'var(--color-accent)', backgroundColor: 'rgba(0,245,212,0.08)' }}>info@tuempresa.com</a>
           </div>
 
           {status === 'success' && <div style={{ color: 'var(--color-primary)', marginTop: 8 }}>Gracias — recibimos tu mensaje. Te contactaremos pronto.</div>}
@@ -268,7 +560,6 @@ function App() {
         </form>
         </div>
       </section>
-    <div className="section-divider" />
       {/* Footer component */}
       <Footer />
     </div>

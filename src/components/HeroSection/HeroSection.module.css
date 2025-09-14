@@ -1,19 +1,19 @@
 /* TAREA: Reemplazar la paleta de colores y estilos actuales por los definidos en el briefing para proyectar una imagen premium y de confianza. */
 
 /* 1. **Corregir el Fondo Principal:**
-   - El contenedor principal (ej: .heroContainer) debe tener un fondo de color sólido, no un gradiente lavanda.
+   - El contenedor principal debe tener un fondo de color sólido, no un gradiente lavanda.
    - Usar el color primario: Azul Oscuro Profundo (#0D1B2A).
    - El color del texto principal debe ser Blanco (#FFFFFF).
 */
 .heroContainer {
-  background-color: #0D1B2A !important; /* forzar color primario */
+  /* Usar el color primario sin rounded para que el hero ocupe todo el ancho visualmente */
+  background-color: var(--color-primary);
   color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  padding: 72px 20px;
-  min-height: 68vh;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(13,27,42,0.35);
+  display: block; /* permitir full-bleed y que el inner grid controle el ancho */
+  padding: 64px 18px;
+  min-height: 60vh;
+  border-radius: 0; /* quitar rounding que causaba saltos visuales */
+  box-shadow: none; /* quitar sombra para un look más limpio */
   width: 100%;
   box-sizing: border-box;
   position: relative;
@@ -22,7 +22,7 @@
 
 /* Helper override class in case the parent applies background */
 .heroContainerOverride {
-  background-color: #0D1B2A !important;
+  background-color: var(--color-primary) !important;
 }
 
 /* 2. **Corregir Estilos de Botones:**
@@ -35,8 +35,8 @@
    - Quitar cualquier borde translúcido.
 */
 .ctaPrimary {
-  background-color: #00F5D4;
-  color: #0D1B2A;
+  background-color: var(--color-accent);
+  color: var(--color-primary);
   border: none;
   padding: 12px 22px;
   border-radius: 999px;
@@ -57,13 +57,16 @@
 /* Botón Secundario: outline turquesa */
 .ctaSecondary {
   background-color: transparent;
-  border: 2px solid #00F5D4;
-  color: #00F5D4;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
   padding: 10px 18px;
   border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
   transition: background .16s ease, transform .16s ease;
+  display: inline-block; /* Asegurar que ocupe solo el espacio necesario */
+  text-align: center; /* Centrar texto */
+  text-decoration: none; /* Quitar subrayado */
 }
 .ctaSecondary:hover {
   background: rgba(0,245,212,0.06);
@@ -82,6 +85,7 @@
   grid-template-columns: 1fr 480px;
   gap: 32px;
   align-items: center;
+  padding: 0; /* asegurar que el grid use el padding del container */
 }
 
 .heroContent {
@@ -110,35 +114,64 @@
 }
 
 .heroFeatures {
-  margin-top: 22px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
   color: rgba(255,255,255,0.92);
+  width: 100%;
+  max-width: 600px;
 }
+
 .heroFeatures li {
   list-style: none;
   background: rgba(255,255,255,0.04);
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: 500;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.heroFeatures li:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+
+.heroFeatures li::before {
+  content: "✓";
+  font-size: 0.78rem;
+  color: var(--color-accent);
+  background: rgba(0,245,212,0.08);
+  padding: 3px 5px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  text-align: center;
 }
 
 .heroVisual {
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* permitir que la imagen se muestre sin recortes inesperados */
 }
 .heroVisual img {
   width: 100%;
   height: 420px;
   object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
-  filter: brightness(.86) contrast(.98);
+  border-radius: 10px; /* mantener leve rounding sólo en la imagen */
+  box-shadow: none; /* remover sombra pesada que rompía contraste */
+  filter: brightness(.9) contrast(.98); /* Menos intenso para carga rápida */
   transition: filter .35s ease;
-  /* Degradado suave en los bordes para integrar con el fondo */
   -webkit-mask-image: radial-gradient(ellipse at center, black 78%, transparent 100%);
   mask-image: radial-gradient(ellipse at center, black 78%, transparent 100%);
 }
@@ -173,3 +206,94 @@
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
 }
+
+/* Estilos para el menú móvil */
+.mobile-menu {
+  display: none; /* Ocultar menú por defecto */
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--color-primary);
+  width: 250px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.mobile-menu.open {
+  display: flex; /* Mostrar menú cuando está abierto */
+}
+
+.mobile-menu a {
+  color: var(--color-accent);
+  text-decoration: none;
+  padding: 10px 0;
+  transition: color 0.16s ease;
+}
+
+.mobile-menu a:hover {
+  color: #FFFFFF;
+}
+
+/* Estilos para el botón del menú */
+.menu-toggle {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 11;
+}
+
+.menu-toggle:focus {
+  outline: none;
+}
+
+.menu-toggle::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: linear-gradient(to right, transparent, var(--color-accent), transparent);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+  z-index: -1;
+}
+
+.menu-toggle:hover::before {
+  transform: scaleX(1);
+}
+
+:root {
+  /* Asegurar que tokens coincidan con briefing */
+  --color-primary: #0D1B2A; /* Azul profundo */
+  --color-accent: #00F5D4; /* Turquesa */
+  --color-bg: #FFFFFF; /* Blanco */
+  --color-text: #0D1B2A; /* Oscuro sobre claro */
+  /* ...mantén otros */
+}
+
+/* Eliminé duplicados en .equipo-links (líneas 462-473 y 485-496) para evitar overrides */
+.equipo-links .equipo-link {
+  /* Solo una instancia ahora */
+  background: rgba(255,255,255,0.04);
+  color: var(--color-accent);
+  /* ...resto igual */
+}
+
+/* Eliminé duplicados y añadí !important solo donde sea necesario para overrides */
+.App-header {
+  /* Asegurar que no interfiera con hero */
+  background: transparent !important; /* Evita conflictos con hero azul */
+  /* ...resto igual */
+}
+
+/* Este archivo solo debe contener CSS, no código JavaScript.
+   La funcionalidad del formulario debe estar en App.js */

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <!-- Hero Section: Create a container with a dark blue background. Inside, add an H1 title, a paragraph for the subtitle, and two buttons as specified in the brief. -->
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,10 +26,25 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <!-- Open Graph tags for better social sharing -->
+    <meta property="og:title" content="Spore — IA Estratégica para tu Negocio" />
+    <meta property="og:description" content="Mitigamos el riesgo de IA fallida con enfoque estratégico. +7 años de experiencia." />
+    <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+    <meta property="og:url" content="https://jrussellrichards.github.io/web_spore" />
+    <meta property="og:type" content="website" />
     <title>Spore — IA & Data Science</title>
 
     <!-- Calendly widget (popup) -->
     <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+    <!-- Google Analytics 4 (GA4) - Replace G-XXXXXXXXXX with your GA4 Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
   </head>
   <body>
     <noscript>Necesitas habilitar JavaScript para ejecutar esta aplicación.</noscript>

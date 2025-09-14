@@ -13,7 +13,7 @@ const AboutUs = () => {
         <div className="equipo-list" style={{ marginTop: 24 }}>
           <div className="equipo-card">
             <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-              <img src={javierFoto} alt="Javier Richards" className="equipo-avatar" />
+              <img src={javierFoto} alt="Javier Richards" className="equipo-avatar" loading="lazy" />
               <div className="equipo-meta">
                 <h4>Javier Richards</h4>
                 <div className="equipo-role">CEO & Estratega de Negocios con IA</div>
@@ -26,7 +26,7 @@ const AboutUs = () => {
 
           <div className="equipo-card">
             <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-              <img src={rodrigoFoto} alt="Rodrigo Richards" className="equipo-avatar" />
+              <img src={rodrigoFoto} alt="Rodrigo Richards" className="equipo-avatar" loading="lazy" />
               <div className="equipo-meta">
                 <h4>Rodrigo Richards</h4>
                 <div className="equipo-role">CTO & Líder de Ingeniería de IA</div>
@@ -38,7 +38,7 @@ const AboutUs = () => {
 
           <div className="equipo-card">
             <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-              <img src={tomasFoto} alt="Co-Fundador" className="equipo-avatar" />
+              <img src={tomasFoto} alt="Co-Fundador" className="equipo-avatar" loading="lazy" />
               <div className="equipo-meta">
                 <h4>Tomas Prado</h4>
                 <div className="equipo-role">COO & Especialista en Transformación de Negocios</div>
