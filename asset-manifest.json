@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/web_spore/static/css/main.5951dc7f.css",
-    "main.js": "/web_spore/static/js/main.dcafc2f2.js",
+    "main.css": "/web_spore/static/css/main.5befe8f6.css",
+    "main.js": "/web_spore/static/js/main.d129917f.js",
     "static/js/453.a8d8b955.chunk.js": "/web_spore/static/js/453.a8d8b955.chunk.js",
     "static/media/hero.png": "/web_spore/static/media/hero.92a46eec14ab5e575d4a.png",
     "static/media/logo_2.png": "/web_spore/static/media/logo_2.bfa4b641018e8b9903ee.png",
@@ -9,12 +9,12 @@
     "static/media/tomas.jpeg": "/web_spore/static/media/tomas.f51a71281ef38831b8df.jpeg",
     "static/media/rodrigo.jpeg": "/web_spore/static/media/rodrigo.cf2eb48aee1eb375c020.jpeg",
     "index.html": "/web_spore/index.html",
-    "main.5951dc7f.css.map": "/web_spore/static/css/main.5951dc7f.css.map",
-    "main.dcafc2f2.js.map": "/web_spore/static/js/main.dcafc2f2.js.map",
+    "main.5befe8f6.css.map": "/web_spore/static/css/main.5befe8f6.css.map",
+    "main.d129917f.js.map": "/web_spore/static/js/main.d129917f.js.map",
     "453.a8d8b955.chunk.js.map": "/web_spore/static/js/453.a8d8b955.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5951dc7f.css",
-    "static/js/main.dcafc2f2.js"
+    "static/css/main.5befe8f6.css",
+    "static/js/main.d129917f.js"
   ]
 }
