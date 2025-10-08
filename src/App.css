@@ -181,7 +181,7 @@ html, body {
 
 /* Top navigation (compact) */
 .top-nav {
-  background: var(--color-primary);
+  background: #0A0A0A;
   position: sticky;
   top: 0;
   z-index: 60;
@@ -192,14 +192,14 @@ html, body {
 }
 
 .top-nav a {
-  color: rgba(255,255,255,0.92);
+  color: rgba(13,27,42,0.9);
   text-decoration: none;
   transition: color var(--transition-fast);
   cursor: pointer;
 }
 
 .top-nav a:hover {
-  color: #FFFFFF;
+  color: '#0D1B2A';
   text-decoration: none;
 }
 

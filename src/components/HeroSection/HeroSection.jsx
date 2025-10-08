@@ -28,7 +28,7 @@ const HeroSection = ({ openCalendly }) => {
       <div className={styles.heroGrid}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Transforma tu negocio con IA que genera resultados medibles</h1>
-          <p className={styles.heroSubtitle}>En Spore creamos soluciones de IA aplicada que resuelven problemas de negocio reales. Nuestra metodología garantiza proyectos con ROI demostrable.</p>
+          <p className={styles.heroSubtitle}>En Blue Analytics creamos soluciones de IA aplicada que resuelven problemas de negocio reales. Nuestra metodología garantiza proyectos con ROI demostrable.</p>
           
           <div className={styles.heroActions}>
             <button className={styles.ctaPrimary} onClick={() => {

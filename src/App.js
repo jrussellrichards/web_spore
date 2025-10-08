@@ -2,7 +2,7 @@ import './App.css';
 import HeroSection from './components/HeroSection/HeroSection'; // importa el componente HeroSection
 import AboutUs from './components/AboutUs/AboutUs'; // importa el componente HeroSection
 import React, { useEffect, useState } from 'react';
-import logo from './imgs/logo_2.png';
+import logo from './imgs/logo_blue_analytics.png';
 import Footer from './components/Footer/Footer';
 
 
@@ -146,20 +146,26 @@ function App() {
       <nav className="top-nav" style={{ 
         minHeight: 'auto', 
         padding: '12px 28px',
-        background: 'var(--color-primary)',
+        background: '#FFFFFF',
         position: 'sticky',
         top: 0,
         zIndex: 100,
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
-        borderBottom: '1px solid rgba(255,255,255,0.04)'
+        borderBottom: '1px solid rgba(13,27,42,0.1)',
+        color: '#0D1B2A'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, width: '100%', maxWidth: '1180px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <img src={logo} alt="logo" style={{ width: 70, height: 70, borderRadius: 8 }} />
+            <img src={logo} alt="logo" style={{ width: 140, height: 50, borderRadius: 0, objectFit: 'cover' }} />
             <div style={{ textAlign: 'left' }}>
-              <strong style={{ display: 'block', color: '#FFFFFF' }}>Spore</strong>
-              <small style={{ color: 'rgba(255,255,255,0.9)' }}>No vendemos IA. Creamos tu Próxima Ventaja Competitiva.</small>
+              {/* <strong style={{ display: 'block', color: '#FFFFFF' }}>blueanalytics</strong> */}
+              <small   style={{
+    color: 'rgba(13, 27, 42, 0.85)', // Un poco más suave
+    fontWeight: 500,                 // Ligeramente más grueso que normal
+    letterSpacing: '0.5px',          // Le da espacio para "respirar"
+    fontSize: '0.8rem'               // Un tamaño de fuente consistente
+  }}>Creamos tu Próxima Ventaja Competitiva.</small>
             </div>
           </div>
 
@@ -178,7 +184,7 @@ function App() {
               }
               document.body.style.overflow = '';
               document.documentElement.style.overflow = '';
-            }} style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'none' }}>Servicios</a>
+            }} style={{ color: 'rgba(13,27,42,0.9)', textDecoration: 'none' }}>Servicios</a>
             
             <a href="#casos" onClick={(e) => {
               e.preventDefault();
@@ -194,7 +200,7 @@ function App() {
               }
               document.body.style.overflow = '';
               document.documentElement.style.overflow = '';
-            }} style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'none' }}>Casos</a>
+            }} style={{ color: 'rgba(13,27,42,0.9)', textDecoration: 'none' }}>Casos</a>
             
             <a href="#nosotros" onClick={(e) => {
               e.preventDefault();
@@ -210,7 +216,7 @@ function App() {
               }
               document.body.style.overflow = '';
               document.documentElement.style.overflow = '';
-            }} style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'none' }}>Nosotros</a>
+            }} style={{ color: 'rgba(13,27,42,0.9)', textDecoration: 'none' }}>Nosotros</a>
             
             <a href="#recursos" onClick={(e) => {
               e.preventDefault();
@@ -226,7 +232,7 @@ function App() {
               }
               document.body.style.overflow = '';
               document.documentElement.style.overflow = '';
-            }} style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'none' }}>Recursos</a>
+            }} style={{ color: 'rgba(13,27,42,0.9)', textDecoration: 'none' }}>Recursos</a>
             
             <a href="#contacto" className="cta-btn" onClick={(e) => {
               e.preventDefault();
@@ -244,6 +250,15 @@ function App() {
               // Asegurar que el scroll esté habilitado
               document.body.style.overflow = '';
               document.documentElement.style.overflow = '';
+            }} style={{
+              background: 'var(--color-accent)',
+              color: 'var(--color-primary)', /* Azul oscuro en lugar de blanco */
+              padding: '10px 18px',
+              borderRadius: '999px',
+              fontWeight: '700',
+              textDecoration: 'none',
+              display: 'inline-block',
+              boxShadow: '0 6px 14px rgba(0,245,212,0.12)'
             }}>Agendar Consultoría Estratégica</a>
           </div>
 
@@ -252,7 +267,7 @@ function App() {
             display: 'none', 
             background: 'transparent',
             border: 'none',
-            color: '#FFFFFF',
+            color: '#0D1B2A',
             fontSize: '1.5rem',
             cursor: 'pointer',
             '@media (max-width: 780px)': {
@@ -552,7 +567,7 @@ function App() {
               {status === 'sending' ? 'Enviando...' : 'Enviar Mensaje'}
             </button>
             <a className="App-link" href="https://calendly.com/your-calendly" target="_blank" rel="noreferrer" onClick={openCalendly} style={{ color: 'var(--color-accent)', backgroundColor: 'rgba(0,245,212,0.08)' }}>Agenda una reunión</a>
-            <a className="App-link" href="mailto:contacto@spore.com" style={{ color: 'var(--color-accent)', backgroundColor: 'rgba(0,245,212,0.08)' }}>info@tuempresa.com</a>
+            <a className="App-link" href="mailto:contacto@blueanalytics.com" style={{ color: 'var(--color-accent)', backgroundColor: 'rgba(0,245,212,0.08)' }}>info@tuempresa.com</a>
           </div>
 
           {status === 'success' && <div style={{ color: 'var(--color-primary)', marginTop: 8 }}>Gracias — recibimos tu mensaje. Te contactaremos pronto.</div>}
