@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const ProblemSection = () => {
   return (
-    <section id="services" className="py-24 bg-muted/30">
+    <section id="challenge" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <Card className="p-8 md:p-10 bg-surface/80 border-muted/10 rounded-2xl shadow-lg backdrop-blur-sm animate-fade-in">
