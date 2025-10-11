@@ -3,7 +3,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Linkedin, Mail, Link } from "lucide-react";
 import javierImg from "../imgs/javier.jpeg";
 import rodrigoImg from "../imgs/rodrigo.jpeg";
-import tomasImg from "../imgs/tomas.jpeg";
+import nicolasImg from "../imgs/nicolas.jpeg";
 
 const Team = () => {
   const team = [
@@ -11,7 +11,7 @@ const Team = () => {
       name: "Javier R.",
       role: "CEO & Co-Founder",
       img: javierImg,
-      linkedin: "#",
+      linkedin: "www.linkedin.com/in/javier-richards-valenzuela",
       email: "richards.javier@gmail.com",
       bio: "El radar de negocio del equipo. Javier asegura que no hagamos IA solo por moda, sino por ganancias. Su única 'pasión' es ver cómo el capital invertido se multiplica gracias a una estrategia de datos implacable.",
     },
@@ -19,17 +19,17 @@ const Team = () => {
       name: "Rodrigo C.",
       role: "Lead ML Engineer",
       img: rodrigoImg,
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/rodrigo-richards-valenzuela/",
       email: "rodrigo.a.richards@gmail.com",
       bio: "Nuestro 'Geek' de cabecera. Experto en gobernar el caos de los datos, Rodrigo es quien transforma las ideas ambiciosas en modelos de ML que funcionan de verdad y a escala industrial. ¡Desafíalo a resolver cualquier problema!",
     },
     {
-      name: "Tomas F.",
+      name: "Nicolas S.",
       role: "COO & Co-Founder",
-      img: tomasImg,
-      linkedin: "#",
-      email: "mailto:tomas@example.com",
-      bio: "El maestro de la ejecución. Es el antídoto contra los proyectos que se desvían. Tomas lidera la metodología para garantizar que el valor sea una entrega eficiente y documentada, a tiempo y en presupuesto.",
+      img: nicolasImg,
+      linkedin: "https://www.linkedin.com/in/nicol%C3%A1s-s%C3%A1ez-orellana-1b277a106/",
+      email: "mailto:nicolas@example.com",
+      bio: "El maestro de la ejecución. Es el antídoto contra los proyectos que se desvían. Nicolas lidera la metodología para garantizar que el valor sea una entrega eficiente y documentada, a tiempo y en presupuesto.",
     },
   ];
 

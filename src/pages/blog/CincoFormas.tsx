@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import Footer from "@/components/Footer";
 
 function upsertMeta({ selector, attr, value }: { selector: string; attr: "content" | "href"; value: string }) {
   let el = document.querySelector(selector) as HTMLMetaElement | null;
@@ -138,6 +139,7 @@ const CincoFormas = () => {
           </article>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
