@@ -42,10 +42,16 @@ const Mission = () => {
             </div>
           </div>
 
-          <div className="flex justify-center">
-            <div className="rounded-3xl overflow-hidden shadow-2xl border border-muted/10 bg-gradient-to-br from-primary/6 to-accent/6 p-1">
-              <div className="bg-card">
-                <img src={hero4} alt="Nuestra misión" className="w-full h-80 sm:h-96 md:h-[34rem] object-cover block" />
+          <div className="flex justify-center md:justify-end">
+            <div className="w-full max-w-xl md:max-w-6xl rounded-3xl overflow-hidden shadow-2xl border border-muted/10 bg-gradient-to-br from-primary/6 to-accent/6 p-0">
+              <div className="bg-transparent">
+                  <img
+                    src={hero4}
+                    alt="Nuestra misión"
+                    loading="lazy"
+                    style={{ objectPosition: 'right center' }}
+                    className="w-full max-h-[48rem] h-auto object-contain block bg-card"
+                  />
               </div>
             </div>
           </div>
