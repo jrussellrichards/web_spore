@@ -19,26 +19,16 @@ const Navbar = () => {
             />
           </a>
 
-          {/* Desktop Menu */}
+          {/* Desktop Menu (ordered to match page) */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#services" className="text-sm font-medium hover:text-primary transition-colors">
-              Servicios
-            </a>
-            <a href="#framework" className="text-sm font-medium hover:text-primary transition-colors">
-              Framework
-            </a>
-            <a href="#cases" className="text-sm font-medium hover:text-primary transition-colors">
-              Casos de Éxito
-            </a>
-            <a href="#team" className="text-sm font-medium hover:text-primary transition-colors">
-              Equipo
-            </a>
-            <a href="#blog" className="text-sm font-medium hover:text-primary transition-colors">
-              Blog
-            </a>
-            <Button variant="gradient" size="sm">
-              Contactar
-            </Button>
+            <a href="#mission" className="text-sm font-medium hover:text-primary transition-colors">Misión</a>
+            <a href="#challenge" className="text-sm font-medium hover:text-primary transition-colors">Desafío</a>
+            <a href="#services" className="text-sm font-medium hover:text-primary transition-colors">Servicios</a>
+            <a href="#framework" className="text-sm font-medium hover:text-primary transition-colors">Framework</a>
+            <a href="#cases" className="text-sm font-medium hover:text-primary transition-colors">Casos de Éxito</a>
+            <a href="#team" className="text-sm font-medium hover:text-primary transition-colors">Equipo</a>
+            <a href="#blog" className="text-sm font-medium hover:text-primary transition-colors">Blog</a>
+            <Button variant="gradient" size="sm">Contactar</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -50,24 +40,14 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden py-4 space-y-4 animate-fade-in">
-            <a href="#services" className="block text-sm font-medium hover:text-primary transition-colors">
-              Servicios
-            </a>
-            <a href="#framework" className="block text-sm font-medium hover:text-primary transition-colors">
-              Framework
-            </a>
-            <a href="#cases" className="block text-sm font-medium hover:text-primary transition-colors">
-              Casos de Éxito
-            </a>
-            <a href="#team" className="block text-sm font-medium hover:text-primary transition-colors">
-              Equipo
-            </a>
-            <a href="#blog" className="block text-sm font-medium hover:text-primary transition-colors">
-              Blog
-            </a>
-            <Button variant="gradient" size="sm" className="w-full">
-              Contactar
-            </Button>
+            <a href="#mission" className="block text-sm font-medium hover:text-primary transition-colors">Misión</a>
+            <a href="#challenge" className="block text-sm font-medium hover:text-primary transition-colors">Desafío</a>
+            <a href="#services" className="block text-sm font-medium hover:text-primary transition-colors">Servicios</a>
+            <a href="#framework" className="block text-sm font-medium hover:text-primary transition-colors">Framework</a>
+            <a href="#cases" className="block text-sm font-medium hover:text-primary transition-colors">Casos de Éxito</a>
+            <a href="#team" className="block text-sm font-medium hover:text-primary transition-colors">Equipo</a>
+            <a href="#blog" className="block text-sm font-medium hover:text-primary transition-colors">Blog</a>
+            <Button variant="gradient" size="sm" className="w-full">Contactar</Button>
           </div>
         )}
       </div>
