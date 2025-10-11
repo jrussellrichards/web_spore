@@ -1,60 +1,62 @@
-import { AlertTriangle, CheckCircle } from "lucide-react";
+import { AlertTriangle, CheckCircle, BarChart2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const ProblemSection = () => {
   return (
     <section id="services" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Problem */}
-          <Card className="p-8 bg-destructive/5 border-destructive/20 animate-slide-in">
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-destructive/10 rounded-lg">
-                <AlertTriangle className="h-6 w-6 text-destructive" />
-              </div>
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold">
-                  Detén la Hemorragia de Inversiones en IA Fallidas
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Según Gartner, el <span className="font-bold text-destructive">85% de los proyectos de IA fracasan</span> porque 
-                  se prioriza la tecnología sobre el problema de negocio.
-                </p>
-                <p className="text-muted-foreground">
-                  ¿Puedes permitirte esa inversión a ciegas?
-                </p>
-              </div>
-            </div>
-          </Card>
+        <div className="max-w-4xl mx-auto">
+          <Card className="p-8 md:p-10 bg-surface/80 border-muted/10 rounded-2xl shadow-lg backdrop-blur-sm animate-fade-in">
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-center tracking-tight">
+                Evita inversiones de IA sin impacto
+              </h2>
 
-          {/* Solution */}
-          <Card className="p-8 bg-primary/5 border-primary/20 animate-slide-in" style={{ animationDelay: "0.2s" }}>
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-primary/10 rounded-lg">
-                <CheckCircle className="h-6 w-6 text-primary" />
-              </div>
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold">
-                  Nosotros cambiamos el enfoque
-                </h3>
-                <div className="space-y-3 text-muted-foreground">
-                  <div className="flex items-start gap-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2" />
-                    <p>Diagnosticamos el negocio primero</p>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2" />
-                    <p>Diseñamos soluciones orientadas a impacto</p>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2" />
-                    <p>Solo entregamos lo que genera resultados medibles</p>
+                <p className="text-center text-muted-foreground max-w-2xl mx-auto">
+                Según Gartner, el <span className="font-bold text-destructive">85% de los proyectos de IA fracasan</span> porque 
+                  se prioriza la tecnología sobre el problema de negocio. 
+                  <span className="font-bold text-primary"> Nosotros invertimos el orden</span> y evitamos ese riesgo con una Metodología de Valor que garantiza:
+                </p>
+
+              <div className="flex flex-col md:flex-row gap-4 items-stretch mt-2">
+                <div className="flex-1 bg-muted/20 rounded-xl p-4 flex items-start gap-4">
+                    <div className="p-3 bg-blue-500/10 rounded-lg">
+                    <BarChart2 className="h-6 w-6 text-blue-500" />
+                    </div>
+                  <div>
+                    <p className="font-semibold">Diagnóstico estratégico</p>
+                    <p className="text-sm text-muted-foreground">Priorización del caso de uso con mayor impacto.</p>
                   </div>
                 </div>
-                <p className="font-semibold text-primary pt-2">
-                  Tu éxito es nuestra métrica.
-                </p>
+
+                <div className="flex-1 bg-muted/10 rounded-xl p-4 flex items-start gap-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <CheckCircle className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-semibold">MVP a Negocio</p>
+                    <p className="text-sm text-muted-foreground">Pilotos definidos por el Retorno de Inversión (ROI), no por la funcionalidad.</p>
+                  </div>
+                </div>
+
+                <div className="flex-1 bg-muted/20 rounded-xl p-4 flex items-start gap-4">
+                    <div className="p-3 bg-accent/10 rounded-lg">
+                    <AlertTriangle className="h-6 w-6 text-accent" />
+                    </div>
+                  <div>
+                    <p className="font-semibold">Observabilidad 360</p>
+                    <p className="text-sm text-muted-foreground">Alineación y medición de métricas de negocio desde el día uno.</p>
+                  </div>
+                </div>
               </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+                <Button variant="gradient" size="lg">Solicitar diagnóstico</Button>
+                <Button variant="outline" size="lg">Ver casos</Button>
+              </div>
+
+              <p className="text-xs text-muted-foreground text-center">Resultados varían según contexto. Pide una evaluación personalizada.</p>
             </div>
           </Card>
         </div>

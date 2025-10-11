@@ -39,8 +39,9 @@ const Framework = () => {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Tu ruta segura hacia resultados medibles. Nuestro framework asegura que la tecnología 
-            se aplique solo cuando hay un caso de negocio claro.
+            Tu garantía de valor. Detenemos el "hype" tecnológico. 
+            Nuestro proceso es tu primer filtro: si no hay un Caso de Negocio rentable y medible a la vista, no implementamos. 
+            Solo avanzamos a la tecnología cuando el valor está asegurado.
           </p>
         </div>
 

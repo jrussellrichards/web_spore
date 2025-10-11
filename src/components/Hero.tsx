@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, TrendingUp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
@@ -20,10 +20,7 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
-            <TrendingUp className="h-4 w-4" />
-            <span>IA con ROI demostrable</span>
-          </div>
+   
 
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
             Transforma tu negocio con{" "}
@@ -34,7 +31,7 @@ const Hero = () => {
 
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
             En Blue Analytics creamos soluciones de IA aplicada que resuelven problemas de negocio reales. 
-            Nuestra metodología garantiza proyectos con ROI demostrable.
+            Nuestra metodología garantiza que cada proyecto tenga un valor y un impacto medible.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
@@ -50,15 +47,15 @@ const Hero = () => {
           <div className="flex flex-wrap justify-center gap-8 pt-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-primary" />
-              <span>+50 proyectos exitosos</span>
+              <span>7 años de experiencia real</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-secondary" />
-              <span>ROI promedio 300%</span>
+              <span>Impacto medible</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-accent" />
-              <span>Implementación en 8-12 semanas</span>
+              <span>Pilotos ágiles</span>
             </div>
           </div>
         </div>
