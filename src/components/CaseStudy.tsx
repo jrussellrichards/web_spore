@@ -3,9 +3,9 @@ import { TrendingUp, Shield, Users } from "lucide-react";
 
 const CaseStudy = () => {
   const stats = [
-    { value: "+45%", label: "Aumento en conversión digital", icon: TrendingUp },
-    { value: "-78%", label: "Reducción en operaciones fraudulentas", icon: Shield },
-    { value: "300%", label: "ROI en primer año", icon: Users },
+    { value: "2.200h", label: "Horas optimizadas al año", icon: Users },
+    { value: "-90%", label: "Disminución de errores operativos", icon: Shield },
+    { value: "300%", label: "Retorno de inversión en el primer año", icon: TrendingUp },
   ];
 
   return (
@@ -16,9 +16,9 @@ const CaseStudy = () => {
             Caso de éxito destacado
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Cómo un banco regional{" "}
+            Cómo una empresa regional{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              mejoró conversión y redujo fraude
+              mejoró conversión y optimizó sus procesos
             </span>{" "}
             usando IA aplicada
           </h2>
@@ -50,16 +50,14 @@ const CaseStudy = () => {
           <Card className="p-8 animate-slide-in">
             <h3 className="text-2xl font-bold mb-4 text-destructive/80">Desafío</h3>
             <p className="text-muted-foreground leading-relaxed">
-              El cliente enfrentaba caída en conversión digital y aumento de operaciones fraudulentas 
-              que impactaban ingresos y confianza.
+              El cliente enfrentaba altos costos y demoras debido a procesos manuales, tareas repetitivas y análisis complejos, lo que limitaba su capacidad de respuesta y eficiencia operativa.
             </p>
           </Card>
 
           <Card className="p-8 animate-slide-in" style={{ animationDelay: "0.2s" }}>
             <h3 className="text-2xl font-bold mb-4 text-primary">Nuestra solución</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Implementamos modelos predictivos de comportamiento, sistemas de scoring en tiempo real 
-              y un asistente inteligente para capturar leads y validar interacciones fraudulentas.
+              Implementamos agentes inteligentes personalizados que automatizan tareas repetitivas, procesan datos en tiempo real y optimizan procesos críticos, permitiendo decisiones más ágiles y eficientes.
             </p>
           </Card>
         </div>
