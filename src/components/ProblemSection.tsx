@@ -1,6 +1,7 @@
 import { AlertTriangle, CheckCircle, BarChart2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { openCalendly } from "@/lib/calendly";
 
 const ProblemSection = () => {
   return (
@@ -52,7 +53,7 @@ const ProblemSection = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
-                <Button variant="gradient" size="lg">Solicitar diagnóstico</Button>
+                <Button variant="gradient" size="lg" onClick={() => openCalendly()}>Solicitar diagnóstico</Button>
                 <Button variant="outline" size="lg">Ver casos</Button>
               </div>
 

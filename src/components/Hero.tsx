@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import { openCalendly } from "@/lib/calendly";
 
 const Hero = () => {
   return (
@@ -35,7 +36,7 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button variant="gradient" size="lg" className="group">
+            <Button variant="gradient" size="lg" className="group" onClick={() => openCalendly()}>
               Agenda una consultoría
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
