@@ -12,7 +12,7 @@ const Team = () => {
       role: "CEO & Co-Founder",
       img: javierImg,
       linkedin: "https://www.linkedin.com/in/javier-richards-valenzuela",
-      email: "richards.javier@gmail.com",
+      email: "mailto:richards.javier@gmail.com",
       bio: "El radar de negocio del equipo. Javier asegura que no hagamos IA solo por moda, sino por ganancias. Su única 'pasión' es ver cómo el capital invertido se multiplica gracias a una estrategia de datos implacable.",
     },
     {
@@ -20,7 +20,7 @@ const Team = () => {
       role: "Lead ML Engineer",
       img: rodrigoImg,
       linkedin: "https://www.linkedin.com/in/rrichards95/",
-      email: "rodrigo.a.richards@gmail.com",
+      email: "mailto:rodrigo.a.richards@gmail.com",
       bio: "Nuestro 'Geek' de cabecera. Experto en gobernar el caos de los datos, Rodrigo es quien transforma las ideas ambiciosas en modelos de ML que funcionan de verdad y a escala industrial. ¡Desafíalo a resolver cualquier problema!",
     },
     {
@@ -28,7 +28,7 @@ const Team = () => {
       role: "COO & Co-Founder",
       img: nicolasImg,
       linkedin: "https://www.linkedin.com/in/nicol%C3%A1s-s%C3%A1ez-orellana-1b277a106/",
-      email: "mailto:nicolas@example.com",
+      email: "mailto:nicolas.saez@uc.cl",
       bio: "El maestro de la ejecución. Es el antídoto contra los proyectos que se desvían. Nicolas lidera la metodología para garantizar que el valor sea una entrega eficiente y documentada, a tiempo y en presupuesto.",
     },
   ];
@@ -72,9 +72,6 @@ const Team = () => {
                       </a>
                       <a href={m.email} aria-label={`Email ${m.name}`} className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-muted/20 text-muted-foreground hover:bg-primary hover:text-white transition">
                         <Mail className="h-4 w-4" />
-                      </a>
-                      <a href="#" aria-label={`${m.name} web`} className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-muted/20 text-muted-foreground hover:bg-primary hover:text-white transition">
-                        <Link className="h-4 w-4" />
                       </a>
                     </div>
                   </div>

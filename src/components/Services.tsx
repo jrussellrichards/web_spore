@@ -1,12 +1,13 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Activity, MessageSquare, Zap, Users, Cpu } from "lucide-react";
+import { Activity, MessageSquare, Users, Cpu, Camera } from "lucide-react";
 
 const primary = [
   {
     icon: Activity,
-    title: "Agentes Autónomos",
-    outcome: "Automatiza operaciones repetitivas y reduce costos operativos",
+    title: "Automatización y Agentes Autónomos",
+    outcome:
+      "Desde optimizar flujos (RPA + IA) hasta agentes autónomos proactivos que ejecutan tareas complejas y reducen costos.",
   },
   {
     icon: MessageSquare,
@@ -14,9 +15,9 @@ const primary = [
     outcome: "Convierte tu conocimiento en respuestas automáticas para ventas y soporte",
   },
   {
-    icon: Zap,
-    title: "Automatización Inteligente",
-    outcome: "Optimiza procesos clave sin aumentar la plantilla",
+    icon: Camera,
+    title: "Visión por Computador & OCR",
+    outcome: "Extracción automática de información y visión aplicada para operaciones, control de calidad y analítica.",
   },
   {
     icon: Users,
@@ -33,7 +34,7 @@ const primary = [
 const secondary = [
   "Estrategia y priorización de iniciativas IA",
   "MLOps: deploy y monitorización",
-  "Visión por computador y OCR",
+  "Evaluación de madurez de datos & hoja de ruta para capturar valor",
   "Governance y prácticas responsables",
 ];
 
@@ -48,7 +49,7 @@ const Services = () => {
             <div className="mx-auto mb-4 w-28 h-1 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse"></div>
             <h2 className="text-3xl md:text-4xl font-extrabold mb-2">IA aplicada para mejorar resultados</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Ayudamos a empresas a convertir IA en impacto medible: menos costes, mayor eficiencia y mejores decisiones.
+              Ayudamos a empresas a diseñar e implementar soluciones de IA y analítica avanzada en impacto medible: menos costes, mayor eficiencia y mejores decisiones.
             </p>
           </div>
 

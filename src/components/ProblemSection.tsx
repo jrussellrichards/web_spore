@@ -15,7 +15,7 @@ const ProblemSection = () => {
               </h2>
 
                 <p className="text-center text-muted-foreground max-w-2xl mx-auto">
-                Según Gartner, el <span className="font-bold text-destructive">85% de los proyectos de IA fracasan</span> porque 
+                Según Gartner, el <span className="font-bold text-orange-500">85% de los proyectos de IA fracasan</span> porque 
                   se prioriza la tecnología sobre el problema de negocio. 
                   <span className="font-bold text-primary"> Nosotros invertimos el orden</span> y evitamos ese riesgo con una Metodología de Valor que garantiza:
                 </p>
