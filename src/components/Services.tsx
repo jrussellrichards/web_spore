@@ -1,11 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Activity, MessageSquare, Users, Cpu, Camera } from "lucide-react";
+import { Robot } from "phosphor-react";
 
 const primary = [
   {
-    icon: Activity,
-    title: "Automatización y Agentes Autónomos",
+    icon: Robot,
+    title: "Agentes Autónomos",
     outcome:
       "Desde optimizar flujos (RPA + IA) hasta agentes autónomos proactivos que ejecutan tareas complejas y reducen costos.",
   },
