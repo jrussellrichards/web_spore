@@ -26,7 +26,7 @@ const Hero = () => {
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
             Transforma tu negocio con{" "}
             <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              IA que genera resultados medibles
+              IA generando resultados medibles
             </span>
           </h1>
 

@@ -16,7 +16,7 @@ const Team = () => {
       bio: "El radar de negocio del equipo. Javier asegura que no hagamos IA solo por moda, sino por ganancias. Su única 'pasión' es ver cómo el capital invertido se multiplica gracias a una estrategia de datos implacable.",
     },
     {
-      name: "Rodrigo C.",
+      name: "Rodrigo R.",
       role: "Lead ML Engineer",
       img: rodrigoImg,
       linkedin: "https://www.linkedin.com/in/rrichards95/",
