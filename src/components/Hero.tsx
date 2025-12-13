@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `url(${heroBg})`,
@@ -21,7 +21,7 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-   
+
 
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
             Transforma tu negocio con{" "}
@@ -31,7 +31,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            En Blue Analytics creamos soluciones de IA aplicada que resuelven problemas de negocio reales. 
+            En Blue Analytics creamos soluciones de IA aplicada que resuelven problemas de negocio reales.
             Nuestra metodología garantiza que cada proyecto tenga un valor y un impacto medible.
           </p>
 
@@ -40,9 +40,7 @@ const Hero = () => {
               Agenda una consultoría
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="lg">
-              Ver casos de éxito
-            </Button>
+
           </div>
 
           <div className="flex flex-wrap justify-center gap-8 pt-8 text-sm text-muted-foreground">

@@ -12,22 +12,22 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <a href="/" className="flex items-center gap-3">
-            <img 
-              src={logo} 
-              alt="Blue Analytics Logo" 
+            <img
+              src={logo}
+              alt="Blue Analytics Logo"
               className="h-10 w-auto"
             />
           </a>
 
           {/* Desktop Menu (ordered to match page) */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#mission" className="text-sm font-medium hover:text-primary transition-colors">Misión</a>
-            <a href="#challenge" className="text-sm font-medium hover:text-primary transition-colors">Desafío</a>
-            <a href="#services" className="text-sm font-medium hover:text-primary transition-colors">Servicios</a>
-            <a href="#framework" className="text-sm font-medium hover:text-primary transition-colors">Framework</a>
-            <a href="#cases" className="text-sm font-medium hover:text-primary transition-colors">Casos de Éxito</a>
-            <a href="#team" className="text-sm font-medium hover:text-primary transition-colors">Equipo</a>
-            <a href="#blog" className="text-sm font-medium hover:text-primary transition-colors">Blog</a>
+            <a href="#mission" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Misión</a>
+            <a href="#challenge" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Desafío</a>
+            <a href="#services" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Servicios</a>
+            <a href="#framework" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Framework</a>
+            <a href="#cases" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Casos de Éxito</a>
+            <a href="#team" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Equipo</a>
+            <a href="#blog" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Blog</a>
             <Button variant="gradient" size="sm">Contactar</Button>
           </div>
 
@@ -40,13 +40,13 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden py-4 space-y-4 animate-fade-in">
-            <a href="#mission" className="block text-sm font-medium hover:text-primary transition-colors">Misión</a>
-            <a href="#challenge" className="block text-sm font-medium hover:text-primary transition-colors">Desafío</a>
-            <a href="#services" className="block text-sm font-medium hover:text-primary transition-colors">Servicios</a>
-            <a href="#framework" className="block text-sm font-medium hover:text-primary transition-colors">Framework</a>
-            <a href="#cases" className="block text-sm font-medium hover:text-primary transition-colors">Casos de Éxito</a>
-            <a href="#team" className="block text-sm font-medium hover:text-primary transition-colors">Equipo</a>
-            <a href="#blog" className="block text-sm font-medium hover:text-primary transition-colors">Blog</a>
+            <a href="#mission" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Misión</a>
+            <a href="#challenge" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Desafío</a>
+            <a href="#services" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Servicios</a>
+            <a href="#framework" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Framework</a>
+            <a href="#cases" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Casos de Éxito</a>
+            <a href="#team" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Equipo</a>
+            <a href="#blog" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Blog</a>
             <Button variant="gradient" size="sm" className="w-full">Contactar</Button>
           </div>
         )}
