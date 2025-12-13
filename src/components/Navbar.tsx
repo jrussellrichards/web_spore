@@ -1,11 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import logo from "@/assets/logo-blue-analytics.png";
-
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  // Helper to generate correct href
+  const getHref = (sectionId: string) => {
+    return isHome ? `#${sectionId}` : `/#${sectionId}`;
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
@@ -21,13 +28,13 @@ const Navbar = () => {
 
           {/* Desktop Menu (ordered to match page) */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#mission" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Misión</a>
-            <a href="#challenge" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Desafío</a>
-            <a href="#services" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Servicios</a>
-            <a href="#framework" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Framework</a>
-            <a href="#cases" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Casos de Éxito</a>
-            <a href="#team" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Equipo</a>
-            <a href="#blog" className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Blog</a>
+            <a href={getHref("mission")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Misión</a>
+            <a href={getHref("challenge")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Desafío</a>
+            <a href={getHref("services")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Servicios</a>
+            <a href={getHref("framework")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Framework</a>
+            <a href={getHref("cases")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Casos de Éxito</a>
+            <a href={getHref("team")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Equipo</a>
+            <a href={getHref("blog")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Blog</a>
             <Button variant="gradient" size="sm">Contactar</Button>
           </div>
 
@@ -40,13 +47,13 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden py-4 space-y-4 animate-fade-in">
-            <a href="#mission" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Misión</a>
-            <a href="#challenge" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Desafío</a>
-            <a href="#services" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Servicios</a>
-            <a href="#framework" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Framework</a>
-            <a href="#cases" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Casos de Éxito</a>
-            <a href="#team" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Equipo</a>
-            <a href="#blog" className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Blog</a>
+            <a href={getHref("mission")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Misión</a>
+            <a href={getHref("challenge")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Desafío</a>
+            <a href={getHref("services")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Servicios</a>
+            <a href={getHref("framework")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Framework</a>
+            <a href={getHref("cases")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Casos de Éxito</a>
+            <a href={getHref("team")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Equipo</a>
+            <a href={getHref("blog")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Blog</a>
             <Button variant="gradient" size="sm" className="w-full">Contactar</Button>
           </div>
         )}
