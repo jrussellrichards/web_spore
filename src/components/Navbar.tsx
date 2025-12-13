@@ -35,7 +35,9 @@ const Navbar = () => {
             <a href={getHref("cases")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Casos de Éxito</a>
             <a href={getHref("team")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Equipo</a>
             <a href={getHref("blog")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Blog</a>
-            <Button variant="gradient" size="sm">Contactar</Button>
+            <a href="/contact">
+              <Button variant="gradient" size="sm">Contactar</Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -54,7 +56,9 @@ const Navbar = () => {
             <a href={getHref("cases")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Casos de Éxito</a>
             <a href={getHref("team")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Equipo</a>
             <a href={getHref("blog")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Blog</a>
-            <Button variant="gradient" size="sm" className="w-full">Contactar</Button>
+            <a href="/contact" className="block w-full">
+              <Button variant="gradient" size="sm" className="w-full">Contactar</Button>
+            </a>
           </div>
         )}
       </div>

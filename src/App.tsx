@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ComoEmpezar from "./pages/blog/ComoEmpezar";
 import CincoFormas from "./pages/blog/CincoFormas";
+import Contact from "./pages/Contact";
 import ScrollToAnchor from "./components/ScrollToAnchor";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/blog/como-empezar" element={<ComoEmpezar />} />
           <Route path="/blog/cinco-formas" element={<CincoFormas />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

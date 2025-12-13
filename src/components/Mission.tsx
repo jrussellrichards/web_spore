@@ -33,7 +33,7 @@ const Mission = () => {
             </ul>
 
             <div className="flex gap-4">
-              <a href="mailto:info@blueanalytics.com" className="inline-block">
+              <a href="/contact" className="inline-block">
                 <Button variant="gradient">Contactar equipo</Button>
               </a>
               <a href="#services" className="inline-block">
@@ -45,13 +45,13 @@ const Mission = () => {
           <div className="flex justify-center md:justify-end">
             <div className="w-full max-w-xl md:max-w-6xl rounded-3xl overflow-hidden shadow-2xl border border-muted/10 bg-gradient-to-br from-primary/6 to-accent/6 p-0">
               <div className="bg-transparent">
-                  <img
-                    src={hero4}
-                    alt="Nuestra misión"
-                    loading="lazy"
-                    style={{ objectPosition: 'right center' }}
-                    className="w-full max-h-[48rem] h-auto object-contain block bg-card"
-                  />
+                <img
+                  src={hero4}
+                  alt="Nuestra misión"
+                  loading="lazy"
+                  style={{ objectPosition: 'right center' }}
+                  className="w-full max-h-[48rem] h-auto object-contain block bg-card"
+                />
               </div>
             </div>
           </div>
