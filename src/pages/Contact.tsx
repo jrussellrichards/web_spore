@@ -67,15 +67,7 @@ const Contact = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex items-start gap-4">
-                                    <div className="p-3 rounded-lg bg-card border shadow-sm text-primary">
-                                        <MapPin className="w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-semibold text-foreground">Oficinas</h3>
-                                        <p className="text-muted-foreground">Las Condes, Santiago, Chile.</p>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
 
