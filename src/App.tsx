@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ComoEmpezar from "./pages/blog/ComoEmpezar";
 import CincoFormas from "./pages/blog/CincoFormas";
+import ScrollToAnchor from "./components/ScrollToAnchor";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter basename="/">
+        <ScrollToAnchor />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/blog/como-empezar" element={<ComoEmpezar />} />
