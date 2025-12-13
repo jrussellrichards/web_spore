@@ -8,6 +8,9 @@ const ScrollToAnchor = () => {
     useEffect(() => {
         if (location.hash) {
             lastHash.current = location.hash.slice(1); // remove '#'
+        } else {
+            window.scrollTo(0, 0);
+            lastHash.current = '';
         }
 
         if (lastHash.current && document.getElementById(lastHash.current)) {
