@@ -49,14 +49,14 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden py-4 space-y-4 animate-fade-in">
-            <a href={getHref("mission")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Misión</a>
-            <a href={getHref("challenge")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Desafío</a>
-            <a href={getHref("services")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Servicios</a>
-            <a href={getHref("framework")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Framework</a>
-            <a href={getHref("cases")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Casos de Éxito</a>
-            <a href={getHref("team")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Equipo</a>
-            <a href={getHref("blog")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover">Blog</a>
-            <a href="/contact" className="block w-full">
+            <a href={getHref("mission")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover" onClick={() => setIsOpen(false)}>Misión</a>
+            <a href={getHref("challenge")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover" onClick={() => setIsOpen(false)}>Desafío</a>
+            <a href={getHref("services")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover" onClick={() => setIsOpen(false)}>Servicios</a>
+            <a href={getHref("framework")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover" onClick={() => setIsOpen(false)}>Framework</a>
+            <a href={getHref("cases")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover" onClick={() => setIsOpen(false)}>Casos de Éxito</a>
+            <a href={getHref("team")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover" onClick={() => setIsOpen(false)}>Equipo</a>
+            <a href={getHref("blog")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover" onClick={() => setIsOpen(false)}>Blog</a>
+            <a href="/contact" className="block w-full" onClick={() => setIsOpen(false)}>
               <Button variant="gradient" size="sm" className="w-full">Contactar</Button>
             </a>
           </div>
