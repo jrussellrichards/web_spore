@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo-blue-analytics.png";
 
 const Navbar = () => {
@@ -35,9 +35,9 @@ const Navbar = () => {
             <a href={getHref("cases")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Casos de Éxito</a>
             <a href={getHref("team")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Equipo</a>
             <a href={getHref("blog")} className="text-sm font-medium px-3 py-2 rounded-md sweep-hover">Blog</a>
-            <a href="/contact">
+            <Link to="/contact">
               <Button variant="gradient" size="sm">Contactar</Button>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -56,9 +56,9 @@ const Navbar = () => {
             <a href={getHref("cases")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover" onClick={() => setIsOpen(false)}>Casos de Éxito</a>
             <a href={getHref("team")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover" onClick={() => setIsOpen(false)}>Equipo</a>
             <a href={getHref("blog")} className="block text-sm font-medium px-3 py-2 rounded-md sweep-hover" onClick={() => setIsOpen(false)}>Blog</a>
-            <a href="/contact" className="block w-full" onClick={() => setIsOpen(false)}>
+            <Link to="/contact" className="block w-full" onClick={() => setIsOpen(false)}>
               <Button variant="gradient" size="sm" className="w-full">Contactar</Button>
-            </a>
+            </Link>
           </div>
         )}
       </div>

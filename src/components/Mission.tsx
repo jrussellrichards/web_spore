@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import hero4 from "@/imgs/hero_6.png";
 
 const Mission = () => {
@@ -33,9 +34,9 @@ const Mission = () => {
             </ul>
 
             <div className="flex gap-4">
-              <a href="/contact" className="inline-block">
+              <Link to="/contact" className="inline-block">
                 <Button variant="gradient">Contactar equipo</Button>
-              </a>
+              </Link>
               <a href="#services" className="inline-block">
                 <Button variant="outline">Ver servicios</Button>
               </a>
