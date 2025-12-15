@@ -19,14 +19,47 @@ const Contact = () => {
         message: ""
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
-        toast({
-            title: "Mensaje enviado",
-            description: "Gracias por contactarnos. Nuestro equipo te responderá a la brevedad.",
-        });
-        setFormData({ name: "", email: "", company: "", role: "", message: "" });
+        setIsSubmitting(true);
+
+        // TODO: Replace with your actual Formspree Endpoint
+        const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+        try {
+            const response = await fetch(FORMSPREE_ENDPOINT, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                toast({
+                    title: "Mensaje enviado",
+                    description: "Gracias por contactarnos. Nuestro equipo te responderá pronto.",
+                });
+                setFormData({ name: "", email: "", company: "", role: "", message: "" });
+            } else {
+                toast({
+                    title: "Error",
+                    description: "Hubo un problema al enviar el mensaje. Inténtalo nuevamente.",
+                    variant: "destructive",
+                });
+            }
+        } catch (error) {
+            toast({
+                title: "Error de conexión",
+                description: "Verifica tu conexión a internet e inténtalo de nuevo.",
+                variant: "destructive",
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -135,9 +168,9 @@ const Contact = () => {
                                     />
                                 </div>
 
-                                <Button type="submit" variant="gradient" className="w-full group">
-                                    Enviar mensaje
-                                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                <Button type="submit" variant="gradient" className="w-full group" disabled={isSubmitting}>
+                                    {isSubmitting ? "Enviando..." : "Enviar mensaje"}
+                                    {!isSubmitting && <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />}
                                 </Button>
 
                                 <p className="text-xs text-center text-muted-foreground">
