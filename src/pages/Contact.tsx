@@ -26,7 +26,7 @@ const Contact = () => {
         setIsSubmitting(true);
 
         // TODO: Replace with your actual Formspree Endpoint
-        const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+        const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnneyajv";
 
         try {
             const response = await fetch(FORMSPREE_ENDPOINT, {
