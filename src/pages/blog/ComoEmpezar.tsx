@@ -139,39 +139,39 @@ const ComoEmpezar = () => {
 
             <section className="rounded-2xl border bg-card p-6 shadow-sm">
               <h3 className="text-lg font-semibold">Plantilla rápida (copiar/pegar)</h3>
-            <div className="space-y-2 text-sm">
+              <div className="space-y-2 text-sm">
                 <div>
-                    <span className="font-semibold text-primary">HIPÓTESIS:</span>{" "}
-                    <span className="text-muted-foreground">Describe el cambio esperado y por qué.</span>
+                  <span className="font-semibold text-primary">HIPÓTESIS:</span>{" "}
+                  <span className="text-muted-foreground">Describe el cambio esperado y por qué.</span>
                 </div>
                 <div>
-                    <span className="font-semibold text-primary">MÉTRICA PRIMARIA:</span>{" "}
-                    <span className="text-muted-foreground">¿Cómo medirás el éxito?</span>
+                  <span className="font-semibold text-primary">MÉTRICA PRIMARIA:</span>{" "}
+                  <span className="text-muted-foreground">¿Cómo medirás el éxito?</span>
                 </div>
                 <div>
-                    <span className="font-semibold text-primary">TAMAÑO/DURACIÓN:</span>{" "}
-                    <span className="text-muted-foreground">¿Cuánto tiempo y cuántos usuarios/registros?</span>
+                  <span className="font-semibold text-primary">TAMAÑO/DURACIÓN:</span>{" "}
+                  <span className="text-muted-foreground">¿Cuánto tiempo y cuántos usuarios/registros?</span>
                 </div>
                 <div>
-                    <span className="font-semibold text-primary">DATA NEEDED:</span>{" "}
-                    <span className="text-muted-foreground">¿Qué datos necesitas y cómo los obtendrás?</span>
+                  <span className="font-semibold text-primary">DATA NEEDED:</span>{" "}
+                  <span className="text-muted-foreground">¿Qué datos necesitas y cómo los obtendrás?</span>
                 </div>
                 <div>
-                    <span className="font-semibold text-primary">CRITERIO DE ÉXITO:</span>{" "}
-                    <span className="text-muted-foreground">¿Qué resultado define el éxito?</span>
+                  <span className="font-semibold text-primary">CRITERIO DE ÉXITO:</span>{" "}
+                  <span className="text-muted-foreground">¿Qué resultado define el éxito?</span>
                 </div>
                 <div>
-                    <span className="font-semibold text-primary">RESPONSABLES:</span>{" "}
-                    <span className="text-muted-foreground">¿Quién lidera y quién apoya?</span>
-        </div>
-      </div>
+                  <span className="font-semibold text-primary">RESPONSABLES:</span>{" "}
+                  <span className="text-muted-foreground">¿Quién lidera y quién apoya?</span>
+                </div>
+              </div>
             </section>
 
             <section className="rounded-2xl p-6 bg-gradient-to-r from-primary/10 to-accent/10 border shadow-sm">
               <h3 className="text-lg font-semibold">¿Listo para comenzar?</h3>
               <p className="text-muted-foreground mt-2">Si quieres, podemos preparar un diagnóstico de 2 semanas con hipótesis y plan de piloto con estimación de ROI.</p>
               <div className="mt-4 flex gap-4">
-                <a href="mailto:info@blueanalytics.com" className="inline-block px-6 py-3 rounded-md bg-gradient-to-r from-primary to-accent text-white font-semibold shadow-lg">Solicitar diagnóstico</a>
+                <a href="mailto:contacto@blueanalytics.cl" className="inline-block px-6 py-3 rounded-md bg-gradient-to-r from-primary to-accent text-white font-semibold shadow-lg">Solicitar diagnóstico</a>
                 <Link to="/" className="inline-block px-6 py-3 rounded-md border border-muted text-muted-foreground">Volver al inicio</Link>
               </div>
             </section>

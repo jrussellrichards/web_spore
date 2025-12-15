@@ -30,7 +30,7 @@ const CincoFormas = () => {
     upsertMeta({ selector: `meta[property='og:type']`, attr: "content", value: "article" });
     upsertMeta({ selector: `meta[name='twitter:card']`, attr: "content", value: "summary_large_image" });
     upsertMeta({ selector: `meta[property='og:image']`, attr: "content", value: `${location.origin}/favicon.png` });
-    return () => {};
+    return () => { };
   }, []);
 
   return (
@@ -132,7 +132,7 @@ const CincoFormas = () => {
               <h3 className="text-lg font-semibold">¿Quieres que lo implementemos?</h3>
               <p className="text-muted-foreground mt-2">Solicita un diagnóstico y te entregamos un plan de ejecución con estimación de impacto.</p>
               <div className="mt-4 flex gap-4">
-                <a href="mailto:info@blueanalytics.com" className="inline-block px-6 py-3 rounded-md bg-gradient-to-r from-secondary to-accent text-white font-semibold shadow-lg">Pedir diagnóstico</a>
+                <a href="mailto:contacto@blueanalytics.cl" className="inline-block px-6 py-3 rounded-md bg-gradient-to-r from-secondary to-accent text-white font-semibold shadow-lg">Pedir diagnóstico</a>
                 <Link to="/" className="inline-block px-6 py-3 rounded-md border border-muted text-muted-foreground">Volver al inicio</Link>
               </div>
             </section>

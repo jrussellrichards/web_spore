@@ -23,7 +23,7 @@ const Footer = () => {
           </nav>
 
           <div className="flex items-center gap-3">
-            <a href="mailto:info@blueanalytics.com" className="text-xs text-slate-600 hover:text-slate-800">info@blueanalytics.com</a>
+            <a href="mailto:contacto@blueanalytics.cl" className="text-xs text-slate-600 hover:text-slate-800">contacto@blueanalytics.cl</a>
             <div className="flex items-center gap-2">
               <a href="#" className="text-slate-400 hover:text-slate-700"><Linkedin className="h-4 w-4" /></a>
               <a href="#" className="text-slate-400 hover:text-slate-700"><Twitter className="h-4 w-4" /></a>

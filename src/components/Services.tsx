@@ -40,7 +40,7 @@ const secondary = [
 ];
 
 const Services = () => {
-  const mailto = `mailto:info@blueanalytics.com?subject=Interés en servicios de IA`;
+  const mailto = `mailto:contacto@blueanalytics.cl?subject=Interés en servicios de IA`;
 
   return (
     <section id="services" className="py-20">

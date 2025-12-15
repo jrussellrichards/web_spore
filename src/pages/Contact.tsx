@@ -63,7 +63,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-foreground">Correo</h3>
-                                        <p className="text-muted-foreground">info@blueanalytics.cl</p>
+                                        <p className="text-muted-foreground">contacto@blueanalytics.cl</p>
                                     </div>
                                 </div>
 
