@@ -9,6 +9,7 @@ import ComoEmpezar from "./pages/blog/ComoEmpezar";
 import CincoFormas from "./pages/blog/CincoFormas";
 import Contact from "./pages/Contact";
 import ScrollToAnchor from "./components/ScrollToAnchor";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <WhatsAppButton />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

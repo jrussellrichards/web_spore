@@ -1,5 +1,6 @@
 import { Linkedin, Twitter, Mail } from "lucide-react";
 import logo from "@/assets/logo-blue-analytics.png";
+import { Link } from "react-router-dom";
 
 
 const Footer = () => {
@@ -16,10 +17,11 @@ const Footer = () => {
           </div>
 
           <nav className="flex gap-5 text-sm text-slate-600">
-            <a href="#services" className="hover:text-slate-800">Servicios</a>
-            <a href="#team" className="hover:text-slate-800">Equipo</a>
-            <a href="#cases" className="hover:text-slate-800">Casos</a>
-            <a href="#blog" className="hover:text-slate-800">Blog</a>
+            <a href="/#services" className="hover:text-slate-800">Servicios</a>
+            <a href="/#team" className="hover:text-slate-800">Equipo</a>
+            <a href="/#cases" className="hover:text-slate-800">Casos</a>
+            <a href="/#blog" className="hover:text-slate-800">Blog</a>
+            <Link to="/contact" className="hover:text-slate-800">Contacto</Link>
           </nav>
 
           <div className="flex items-center gap-3">
