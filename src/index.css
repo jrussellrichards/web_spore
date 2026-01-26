@@ -1,13 +1,171 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 45% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 45% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 45% 25%;
+
+    /* Blue Analytics Brand Colors - Based on Logo */
+    --primary: 215 70% 35%;        /* Navy Blue from logo */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 195 75% 52%;      /* Cyan Blue from logo */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 200 70% 45%;         /* Medium Blue accent */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 215 70% 35%;
+
+    --radius: 0.75rem;
+    
+    /* Custom Design Tokens */
+    --navy: 215 60% 20%;           /* Dark navy from logo */
+    --navy-light: 215 45% 35%;
+    --cyan: 195 75% 52%;           /* Bright cyan from logo */
+    --blue-gradient: linear-gradient(135deg, hsl(215 70% 35%), hsl(195 75% 52%));
+    --glass-bg: 0 0% 100% / 0.7;
+    --shadow-sm: 0 2px 8px hsl(215 70% 35% / 0.08);
+    --shadow-md: 0 8px 24px hsl(215 70% 35% / 0.12);
+    --shadow-lg: 0 16px 48px hsl(215 70% 35% / 0.16);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 60% 12%;
+    --foreground: 210 40% 98%;
+
+    --card: 215 45% 20%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 215 45% 20%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 195 75% 52%;
+    --primary-foreground: 215 60% 12%;
+
+    --secondary: 215 70% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 45% 25%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 200 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 45% 25%;
+    --input: 215 45% 25%;
+    --ring: 195 75% 52%;
+    
+    --glass-bg: 0 0% 0% / 0.4;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .bg-navy {
+    background-color: hsl(var(--navy));
+  }
+  
+  .bg-navy-light {
+    background-color: hsl(var(--navy-light));
+  }
+  
+  .from-navy {
+    --tw-gradient-from: hsl(var(--navy)) var(--tw-gradient-from-position);
+  }
+  
+  .via-navy-light {
+    --tw-gradient-via: hsl(var(--navy-light)) var(--tw-gradient-via-position);
+  }
+  
+  .to-navy {
+    --tw-gradient-to: hsl(var(--navy)) var(--tw-gradient-to-position);
+  }
+
+  .sweep-hover {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: color 0.3s;
+  }
+
+  .sweep-hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsl(var(--primary));
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.3s ease-out;
+  }
+
+  .sweep-hover:hover::before,
+  .sweep-hover:active::before,
+  .sweep-hover:focus::before {
+    transform: scaleX(1);
+  }
+
+  .sweep-hover:hover,
+  .sweep-hover:active,
+  .sweep-hover:focus {
+    color: hsl(var(--primary-foreground));
+  }
 }
