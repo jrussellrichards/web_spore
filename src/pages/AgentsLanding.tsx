@@ -9,6 +9,7 @@ import { useState } from "react";
 import ContactModal from "@/components/ContactModal";
 
 import DemoChat from "@/components/DemoChat";
+import WspDemo from "@/components/WspDemo";
 
 const AgentsLanding = () => {
     const [isDemoOpen, setIsDemoOpen] = useState(false);
@@ -38,31 +39,43 @@ const AgentsLanding = () => {
                     />
                 </div>
 
-                <div className="container mx-auto px-4 text-center relative z-10">
+                <div className="container mx-auto px-4 relative z-10">
 
-                    {/* Headline */}
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 max-w-6xl mx-auto leading-[1.1]">
-                        <span className="block text-slate-200">¿Cuánto le cuesta a tu empresa</span>
-                        <span className="block bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent opacity-90">
-                            no estar cuando un cliente quiere comprar?
-                        </span>
-                    </h1>
+                    <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+                        <div className="text-left">
+                            {/* Headline */}
+                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 leading-[1.1]">
+                                <span className="block text-slate-200">¿Cuánto le cuesta a tu empresa</span>
+                                <span className="block bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent opacity-90">
+                                    no estar cuando un cliente quiere comprar?
+                                </span>
+                            </h1>
 
-                    {/* Subtext */}
-                    <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
-                        Te ayudamos a estar presente en el segundo exacto en que te necesitan. Transformamos la información de tu negocio en un asistente inteligente que elimina las esperas y asegura que cada duda reciba una respuesta precisa, siempre.
-                    </p>
+                            {/* Subtext */}
+                            <p className="text-lg md:text-xl text-slate-400 max-w-xl mb-10 leading-relaxed font-light">
+                                Te ayudamos a estar presente en el segundo exacto en que te necesitan. Transformamos la información de tu negocio en un asistente inteligente que elimina las esperas.
+                            </p>
 
-                    {/* Single Centered Button - Pathsdata Style */}
-                    <div className="flex justify-center mb-24">
-                        <Button
-                            size="lg"
-                            className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white text-lg font-medium px-10 py-7 rounded-full shadow-[0_0_40px_-10px_rgba(79,70,229,0.5)] transition-all hover:scale-105"
-                            onClick={() => setIsDemoOpen(true)}
-                        >
-                            Agendar una Demo
-                        </Button>
+                            {/* Single Button - Aligned Left */}
+                            <div className="flex justify-start">
+                                <Button
+                                    size="lg"
+                                    className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white text-lg font-medium px-10 py-7 rounded-full shadow-[0_0_40px_-10px_rgba(79,70,229,0.5)] transition-all hover:scale-105"
+                                    onClick={() => setIsDemoOpen(true)}
+                                >
+                                    Agendar una Demo
+                                </Button>
+                            </div>
+                        </div>
+
+                        {/* Right Column: WhatsApp Demo */}
+                        <div className="flex justify-center lg:justify-end relative">
+                            {/* Glow effect behind phone */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[600px] bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none"></div>
+                            <WspDemo />
+                        </div>
                     </div>
+
 
                     {/* Divider / Why Us Text */}
                     <div className="text-center mb-16 relative z-20">
