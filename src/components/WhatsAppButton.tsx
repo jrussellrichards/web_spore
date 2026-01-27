@@ -1,19 +1,32 @@
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
 const WhatsAppButton = () => {
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsVisible(true);
+        }, 5000); // Wait 5 seconds before showing
+
+        return () => clearTimeout(timer);
+    }, []);
+
     const phoneNumber = "+56951096594";
     const message = "Hola, me gustaría obtener más información sobre sus servicios de IA y Analytics.";
     const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(message)}`;
+
+    if (!isVisible) return null;
 
     return (
         <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-50 animate-bounce hover:animate-none transition-transform duration-300 hover:scale-110"
+            className="fixed bottom-6 right-6 z-50 animate-in fade-in slide-in-from-bottom-4 duration-1000"
             aria-label="Contactar por WhatsApp"
         >
-            <div className="bg-[#25D366] p-4 rounded-full shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] border border-[#25D366] flex items-center justify-center group relative">
+            <div className="bg-[#25D366] p-4 rounded-full shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] border border-[#25D366] flex items-center justify-center group relative animate-bounce hover:animate-none transition-transform hover:scale-110">
                 {/* Tooltip */}
                 <span className="absolute right-full mr-3 bg-white text-slate-800 text-xs font-semibold py-2 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-slate-100 italic">
                     ¡Hablemos por WhatsApp!

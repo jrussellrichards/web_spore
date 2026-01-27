@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Activity, MessageSquare, Users, Cpu, Camera } from "lucide-react";
 import { Robot } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 const primary = [
   {
@@ -58,13 +59,15 @@ const Services = () => {
             {primary.map((p, i) => {
               const Icon = p.icon;
               return (
-                <Card key={i} className="p-6 text-center flex flex-col items-center h-full transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl border border-transparent hover:border-primary/20">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent text-white mb-4 shadow-xl">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">{p.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4 max-w-[12rem]">{p.outcome}</p>
-                </Card>
+                <Link to={p.title === "Agentes Autónomos" ? "/agents" : "#"} key={i} className="block h-full cursor-pointer">
+                  <Card className="p-6 text-center flex flex-col items-center h-full transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl border border-transparent hover:border-primary/20">
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent text-white mb-4 shadow-xl">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2">{p.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4 max-w-[12rem]">{p.outcome}</p>
+                  </Card>
+                </Link>
               );
             })}
           </div>
