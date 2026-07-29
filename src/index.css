@@ -2,101 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
+
+Blue Analytics — sistema híbrido claro:
+lienzo claro que genera confianza + ventanas técnicas oscuras (.tech-window)
+para demos, terminales y métricas en vivo.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 215 45% 25%;
+    /* Lienzo claro */
+    --background: 210 40% 98%;      /* Blanco hueso #F8FAFC */
+    --foreground: 222 47% 11%;      /* Azul tinta #0F172A */
 
     --card: 0 0% 100%;
-    --card-foreground: 215 45% 25%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 45% 25%;
+    --popover-foreground: 222 47% 11%;
 
-    /* Blue Analytics Brand Colors - Based on Logo */
-    --primary: 215 70% 35%;        /* Navy Blue from logo */
-    --primary-foreground: 0 0% 100%;
-    
-    --secondary: 195 75% 52%;      /* Cyan Blue from logo */
-    --secondary-foreground: 0 0% 100%;
+    /* Azul tinta: CTAs sólidos y titulares */
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 222 47% 11%;
 
-    --accent: 200 70% 45%;         /* Medium Blue accent */
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 16% 42%;
+
+    /* Cian profundo: enlaces y acento único */
+    --accent: 192 79% 31%;          /* #0E7490 */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
+    --border: 214 32% 91%;          /* #E2E8F0 */
     --input: 214 32% 91%;
-    --ring: 215 70% 35%;
+    --ring: 192 79% 31%;
 
     --radius: 0.75rem;
-    
-    /* Custom Design Tokens */
-    --navy: 215 60% 20%;           /* Dark navy from logo */
-    --navy-light: 215 45% 35%;
-    --cyan: 195 75% 52%;           /* Bright cyan from logo */
-    --blue-gradient: linear-gradient(135deg, hsl(215 70% 35%), hsl(195 75% 52%));
-    --glass-bg: 0 0% 100% / 0.7;
-    --shadow-sm: 0 2px 8px hsl(215 70% 35% / 0.08);
-    --shadow-md: 0 8px 24px hsl(215 70% 35% / 0.12);
-    --shadow-lg: 0 16px 48px hsl(215 70% 35% / 0.16);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Tokens de marca */
+    --signal: 187 86% 53%;          /* Cian señal #22D3EE — destacados */
+    --live: 160 84% 39%;            /* Verde operativo #10B981 — agente en línea */
+    --window: 217 53% 9%;           /* Azul noche #0B1424 — ventanas técnicas */
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+  /* Superficies oscuras (landing /agents y ventanas técnicas que usan tokens) */
   .dark {
-    --background: 215 60% 12%;
+    --background: 222 47% 4%;
     --foreground: 210 40% 98%;
 
-    --card: 215 45% 20%;
+    --card: 222 41% 6%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 215 45% 20%;
+    --popover: 222 41% 7%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 195 75% 52%;
-    --primary-foreground: 215 60% 12%;
+    --primary: 197 92% 55%;
+    --primary-foreground: 222 47% 5%;
 
-    --secondary: 215 70% 40%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 218 35% 14%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 215 45% 25%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 32% 10%;
+    --muted-foreground: 217 18% 64%;
 
-    --accent: 200 70% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 213 94% 62%;
+    --accent-foreground: 222 47% 5%;
 
-    --destructive: 0 63% 31%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 215 45% 25%;
-    --input: 215 45% 25%;
-    --ring: 195 75% 52%;
-    
-    --glass-bg: 0 0% 0% / 0.4;
+    --border: 218 30% 14%;
+    --input: 218 30% 14%;
+    --ring: 197 92% 55%;
   }
 }
 
@@ -107,33 +99,70 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
+  }
+
+  html.lenis-active {
+    scroll-behavior: auto;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: hsl(187 86% 53% / 0.3);
   }
 }
 
 @layer utilities {
-  .bg-navy {
-    background-color: hsl(var(--navy));
+  /* ————— Blue Analytics — sistema híbrido claro ————— */
+
+  /* Titular con gradiente: cian profundo → azul (legible sobre claro) */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, hsl(192 80% 33%), hsl(213 90% 42%) 60%, hsl(222 60% 35%));
   }
-  
-  .bg-navy-light {
-    background-color: hsl(var(--navy-light));
+
+  /* Etiqueta de sección: mono, mayúsculas, cian profundo */
+  .section-label {
+    @apply font-mono text-[0.7rem] font-medium uppercase tracking-[0.25em] text-accent;
   }
-  
-  .from-navy {
-    --tw-gradient-from: hsl(var(--navy)) var(--tw-gradient-from-position);
+
+  /* Ventana técnica oscura: la firma híbrida (demos, terminales, métricas) */
+  .tech-window {
+    background: hsl(var(--window));
+    border: 1px solid hsl(217 30% 24% / 0.6);
+    color: hsl(210 40% 98%);
   }
-  
-  .via-navy-light {
-    --tw-gradient-via: hsl(var(--navy-light)) var(--tw-gradient-via-position);
+
+  /* Panel glass claro para cards flotantes */
+  .glass-panel {
+    background: hsl(0 0% 100% / 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(214 32% 88% / 0.9);
   }
-  
-  .to-navy {
-    --tw-gradient-to: hsl(var(--navy)) var(--tw-gradient-to-position);
+
+  /* Grid de puntos sutil sobre claro */
+  .dot-grid {
+    background-image: radial-gradient(hsl(215 25% 40% / 0.16) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Grid de líneas fino sobre claro */
+  .line-grid {
+    background-image:
+      linear-gradient(to right, hsl(215 30% 45% / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(215 30% 45% / 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Divisor hairline con gradiente */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(215 25% 65% / 0.5), transparent);
   }
 
   .sweep-hover {

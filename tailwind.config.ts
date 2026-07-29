@@ -13,6 +13,12 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ['"Space Grotesk"', "Inter", "ui-sans-serif", "sans-serif"],
+        mono: ['"JetBrains Mono"', "ui-monospace", "SFMono-Regular", "monospace"],
+        script: ["Caveat", "ui-rounded", "cursive"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,6 +53,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        signal: "hsl(var(--signal))",
+        live: "hsl(var(--live))",
+        window: "hsl(var(--window))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -106,6 +115,28 @@ export default {
             transform: "translate(-50%,-40%) scale(1)",
           },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-50% - 1.25rem))" },
+        },
+        // Loop exacto para pistas cuyos ítems llevan margen propio (sin gap).
+        "scroll-left": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        shimmer: {
+          from: { backgroundPosition: "200% 0" },
+          to: { backgroundPosition: "-200% 0" },
+        },
+        "pulse-soft": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.4" },
+        },
+        aurora: {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "33%": { transform: "translate(4%, -6%) scale(1.08)" },
+          "66%": { transform: "translate(-5%, 4%) scale(0.95)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -116,6 +147,11 @@ export default {
         "stat-count": "stat-count 0.8s ease-out",
         "meteor-effect": "meteor 5s linear infinite",
         spotlight: "spotlight 2s ease .75s 1 forwards",
+        marquee: "marquee 42s linear infinite",
+        "scroll-left": "scroll-left 45s linear infinite",
+        shimmer: "shimmer 6s linear infinite",
+        "pulse-soft": "pulse-soft 3s ease-in-out infinite",
+        aurora: "aurora 14s ease-in-out infinite",
       },
     },
   },

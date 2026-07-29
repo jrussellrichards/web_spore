@@ -26,9 +26,9 @@ const WhatsAppButton = () => {
             className="fixed bottom-6 right-6 z-50 animate-in fade-in slide-in-from-bottom-4 duration-1000"
             aria-label="Contactar por WhatsApp"
         >
-            <div className="bg-[#25D366] p-4 rounded-full shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] border border-[#25D366] flex items-center justify-center group relative animate-bounce hover:animate-none transition-transform hover:scale-110">
+            <div className="bg-[#25D366] p-3.5 rounded-full shadow-[0_8px_24px_-6px_rgba(37,211,102,0.5)] flex items-center justify-center group relative transition-all duration-300 hover:scale-110 hover:shadow-[0_8px_32px_-4px_rgba(37,211,102,0.65)]">
                 {/* Tooltip */}
-                <span className="absolute right-full mr-3 bg-white text-slate-800 text-xs font-semibold py-2 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-slate-100 italic">
+                <span className="absolute right-full mr-3 bg-white text-slate-800 text-xs font-semibold py-2 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-slate-100">
                     ¡Hablemos por WhatsApp!
                 </span>
 

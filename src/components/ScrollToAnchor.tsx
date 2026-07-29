@@ -10,6 +10,7 @@ const ScrollToAnchor = () => {
             lastHash.current = location.hash.slice(1); // remove '#'
         } else {
             window.scrollTo(0, 0);
+            window.__lenis?.scrollTo(0, { immediate: true });
             lastHash.current = '';
         }
 
@@ -17,7 +18,11 @@ const ScrollToAnchor = () => {
             setTimeout(() => {
                 const element = document.getElementById(lastHash.current);
                 if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (window.__lenis) {
+                        window.__lenis.scrollTo(element, { offset: -88 });
+                    } else {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                     lastHash.current = '';
                 }
             }, 100);
