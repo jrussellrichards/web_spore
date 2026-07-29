@@ -1,37 +1,29 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import ClientsStrip from "@/components/ClientsStrip";
-import ProductsSection from "@/components/ProductsSection";
-import FlowBento from "@/components/FlowBento";
-import HowWeWork from "@/components/HowWeWork";
-import CaseStory from "@/components/CaseStory";
-import Team from "@/components/Team";
-import Faq from "@/components/Faq";
-import Blog from "@/components/Blog";
-import FinalCTA from "@/components/FinalCTA";
+import Hero from "@/components/home/Hero";
+import Mission from "@/components/home/Mission";
+import ProblemSection from "@/components/home/ProblemSection";
+import Services from "@/components/home/Services";
+import Framework from "@/components/home/Framework";
+import CaseStudy from "@/components/home/CaseStudy";
+import Team from "@/components/home/Team";
+import Blog from "@/components/home/Blog";
 import Footer from "@/components/Footer";
-import SmoothScroll from "@/components/fx/SmoothScroll";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      <SmoothScroll />
-      <Navbar />
-      <Hero />
-      <ClientsStrip />
-      <ProductsSection />
-      <FlowBento />
-      <div className="hairline mx-auto max-w-5xl" />
-      <HowWeWork />
-      <CaseStory />
-      <div className="hairline mx-auto max-w-5xl" />
-      <Team />
-      <Faq />
-      <Blog />
-      <FinalCTA />
-      <Footer />
-    </div>
-  );
-};
+/** Home corporativa: qué es Blue Analytics y todo lo que hace.
+ *  La oferta de agentes vive en su propia landing (/empleados-digitales). */
+const Index = () => (
+  <div className="min-h-screen">
+    <Navbar />
+    <Hero />
+    <Mission />
+    <ProblemSection />
+    <Services />
+    <Framework />
+    <CaseStudy />
+    <Team />
+    <Blog />
+    <Footer />
+  </div>
+);
 
 export default Index;

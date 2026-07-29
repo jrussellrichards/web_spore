@@ -1,25 +1,41 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
-import { Menu, MessageCircle, X } from "lucide-react";
+import { ArrowUpRight, Menu, MessageCircle, X } from "lucide-react";
 import logo from "@/assets/logo-blue-analytics.png";
 import { whatsappUrl } from "@/lib/whatsapp";
 
-const links = [
-  { label: "Empleados", id: "products" },
-  { label: "Cómo trabajamos", id: "how" },
-  { label: "Caso", id: "case" },
+export interface NavLink {
+  label: string;
+  id: string;
+}
+
+interface NavbarProps {
+  /** Secciones a las que apunta el menú */
+  links?: NavLink[];
+  /** Ruta dueña de esas secciones: define si el ancla es #id o /ruta#id */
+  basePath?: string;
+  /** CTA de la derecha */
+  cta?: { label: string; href: string; external?: boolean; icon?: "chat" | "arrow" };
+}
+
+const corporateLinks: NavLink[] = [
+  { label: "Misión", id: "mission" },
+  { label: "Desafío", id: "challenge" },
+  { label: "Servicios", id: "services" },
+  { label: "Framework", id: "framework" },
+  { label: "Casos", id: "cases" },
   { label: "Equipo", id: "team" },
-  { label: "FAQ", id: "faq" },
+  { label: "Blog", id: "blog" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ links = corporateLinks, basePath = "/", cta }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/";
-  // Única superficie oscura: la landing /agents. Todo lo demás es claro.
+  // Única superficie oscura: la landing /agents.
   const isDark = location.pathname === "/agents";
+  const onOwnerPage = location.pathname === basePath;
 
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 180, damping: 30, restDelta: 0.001 });
@@ -31,15 +47,29 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const getHref = (sectionId: string) => (isHome ? `#${sectionId}` : `/#${sectionId}`);
+  const getHref = (id: string) => (onOwnerPage ? `#${id}` : `${basePath === "/" ? "" : basePath}/#${id}`.replace("//", "/"));
+
+  const action = cta ?? { label: "Contactar", href: "/contact", icon: "arrow" as const };
+  const CtaIcon = action.icon === "chat" ? MessageCircle : ArrowUpRight;
 
   const linkClass = isDark
     ? "text-sm font-medium text-slate-300 transition-colors hover:text-white"
     : "text-sm font-medium text-slate-600 transition-colors hover:text-foreground";
 
+  const ctaInner = (
+    <>
+      {action.icon === "chat" && <CtaIcon className="h-4 w-4" />}
+      {action.label}
+      {action.icon !== "chat" && (
+        <CtaIcon className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      )}
+    </>
+  );
+  const ctaClass =
+    "group inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-[0_8px_24px_-8px_rgba(15,23,42,0.45)] transition-all hover:shadow-[0_10px_32px_-8px_rgba(15,23,42,0.55)]";
+
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      {/* Hairline de progreso de scroll */}
       <motion.div
         aria-hidden
         style={{ scaleX: progress }}
@@ -57,41 +87,27 @@ const Navbar = () => {
           }`}
         >
           <a href="/" className="flex items-center gap-3" aria-label="Blue Analytics — inicio">
-            <img
-              src={logo}
-              alt="Blue Analytics"
-              className={`h-8 w-auto ${isDark ? "brightness-0 invert" : ""}`}
-            />
+            <img src={logo} alt="Blue Analytics" className={`h-8 w-auto ${isDark ? "brightness-0 invert" : ""}`} />
           </a>
 
           {/* Menú escritorio */}
-          <div className="hidden items-center gap-7 md:flex">
+          <div className="hidden items-center gap-6 md:flex">
             {links.map((l) => (
               <a key={l.id} href={getHref(l.id)} className={`group relative ${linkClass}`}>
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-gradient-to-r from-cyan-500 to-blue-600 transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
-            <div className="flex items-center gap-2 pl-2">
-              <Link
-                to="/contact"
-                className={`hidden items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:inline-flex ${
-                  isDark
-                    ? "text-slate-300 hover:bg-white/5 hover:text-white"
-                    : "text-slate-600 hover:bg-slate-100 hover:text-foreground"
-                }`}
-              >
-                Contacto
-              </Link>
-              <a
-                href={whatsappUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-[0_8px_24px_-8px_rgba(15,23,42,0.45)] transition-all hover:shadow-[0_10px_32px_-8px_rgba(15,23,42,0.55)]"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Habla con el agente
-              </a>
+            <div className="flex items-center gap-2 pl-1">
+              {action.external ? (
+                <a href={action.href} target="_blank" rel="noopener noreferrer" className={ctaClass}>
+                  {ctaInner}
+                </a>
+              ) : (
+                <Link to={action.href} className={ctaClass}>
+                  {ctaInner}
+                </Link>
+              )}
             </div>
           </div>
 
@@ -130,25 +146,25 @@ const Navbar = () => {
                   {l.label}
                 </a>
               ))}
-              <Link
-                to="/contact"
-                className={`block rounded-lg px-3 py-2.5 text-sm font-medium ${
-                  isDark ? "text-slate-200 hover:bg-white/5" : "text-slate-700 hover:bg-slate-100"
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                Contacto
-              </Link>
-              <a
-                href={whatsappUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsOpen(false)}
-                className="mt-1 flex w-full items-center justify-center gap-1.5 rounded-full bg-primary px-3 py-2.5 text-sm font-semibold text-primary-foreground"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Habla con el agente
-              </a>
+              {action.external ? (
+                <a
+                  href={action.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="mt-1 flex w-full items-center justify-center gap-1.5 rounded-full bg-primary px-3 py-2.5 text-sm font-semibold text-primary-foreground"
+                >
+                  {ctaInner}
+                </a>
+              ) : (
+                <Link
+                  to={action.href}
+                  onClick={() => setIsOpen(false)}
+                  className="mt-1 flex w-full items-center justify-center gap-1.5 rounded-full bg-primary px-3 py-2.5 text-sm font-semibold text-primary-foreground"
+                >
+                  {ctaInner}
+                </Link>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
@@ -157,4 +173,5 @@ const Navbar = () => {
   );
 };
 
+export { corporateLinks, whatsappUrl };
 export default Navbar;

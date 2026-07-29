@@ -5,50 +5,60 @@
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
 
-Blue Analytics — sistema híbrido claro:
-lienzo claro que genera confianza + ventanas técnicas oscuras (.tech-window)
-para demos, terminales y métricas en vivo.
+Dos sistemas conviven:
+  :root          → marca corporativa Blue Analytics (home general, blog, contacto)
+  .theme-landing → marca de la landing de empleados digitales (lienzo claro +
+                   ventanas técnicas oscuras vía .tech-window)
 */
 
 @layer base {
   :root {
-    /* Lienzo claro */
-    --background: 210 40% 98%;      /* Blanco hueso #F8FAFC */
-    --foreground: 222 47% 11%;      /* Azul tinta #0F172A */
+    --background: 0 0% 100%;
+    --foreground: 215 45% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 215 45% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 215 45% 25%;
 
-    /* Azul tinta: CTAs sólidos y titulares */
-    --primary: 222 47% 11%;
-    --primary-foreground: 210 40% 98%;
+    /* Blue Analytics Brand Colors - Based on Logo */
+    --primary: 215 70% 35%;        /* Navy Blue from logo */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 94%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 195 75% 52%;      /* Cyan Blue from logo */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 94%;
-    --muted-foreground: 215 16% 42%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    /* Cian profundo: enlaces y acento único */
-    --accent: 192 79% 31%;          /* #0E7490 */
+    --accent: 200 70% 45%;         /* Medium Blue accent */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;          /* #E2E8F0 */
+    --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 192 79% 31%;
+    --ring: 215 70% 35%;
 
     --radius: 0.75rem;
 
-    /* Tokens de marca */
-    --signal: 187 86% 53%;          /* Cian señal #22D3EE — destacados */
-    --live: 160 84% 39%;            /* Verde operativo #10B981 — agente en línea */
-    --window: 217 53% 9%;           /* Azul noche #0B1424 — ventanas técnicas */
+    /* Custom Design Tokens */
+    --navy: 215 60% 20%;
+    --navy-light: 215 45% 35%;
+    --cyan: 195 75% 52%;
+    --blue-gradient: linear-gradient(135deg, hsl(215 70% 35%), hsl(195 75% 52%));
+    --glass-bg: 0 0% 100% / 0.7;
+    --shadow-sm: 0 2px 8px hsl(215 70% 35% / 0.08);
+    --shadow-md: 0 8px 24px hsl(215 70% 35% / 0.12);
+    --shadow-lg: 0 16px 48px hsl(215 70% 35% / 0.16);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Tokens compartidos con la landing */
+    --signal: 187 86% 53%;          /* Cian señal #22D3EE */
+    --live: 160 84% 39%;            /* Verde operativo #10B981 */
+    --window: 217 53% 9%;           /* Azul noche #0B1424 */
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -58,6 +68,35 @@ para demos, terminales y métricas en vivo.
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Landing de empleados digitales: lienzo claro + acento cian profundo.
+     Se aplica envolviendo la página en .theme-landing, sin tocar la home. */
+  .theme-landing {
+    --background: 210 40% 98%;      /* Blanco hueso #F8FAFC */
+    --foreground: 222 47% 11%;      /* Azul tinta #0F172A */
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 47% 11%;         /* Azul tinta: CTAs sólidos */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 16% 42%;
+
+    --accent: 192 79% 31%;          /* Cian profundo #0E7490 */
+    --accent-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 192 79% 31%;
   }
 
   /* Superficies oscuras (landing /agents y ventanas técnicas que usan tokens) */

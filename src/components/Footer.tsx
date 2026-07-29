@@ -32,13 +32,16 @@ const Footer = ({ variant = "light" }: FooterProps) => {
             <div>
               <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-slate-400">Explorar</p>
               <nav className="flex flex-col gap-3 text-sm">
-                <a href="/#products" className="w-fit transition-colors hover:text-foreground">Empleados digitales</a>
-                <a href="/#how" className="w-fit transition-colors hover:text-foreground">Cómo trabajamos</a>
-                <a href="/#case" className="w-fit transition-colors hover:text-foreground">Caso real</a>
+                <a href="/#services" className="w-fit transition-colors hover:text-foreground">Servicios</a>
+                <a href="/#framework" className="w-fit transition-colors hover:text-foreground">Framework</a>
+                <a href="/#cases" className="w-fit transition-colors hover:text-foreground">Casos de éxito</a>
                 <a href="/#team" className="w-fit transition-colors hover:text-foreground">Equipo</a>
                 <a href="/#blog" className="w-fit transition-colors hover:text-foreground">Blog</a>
-                <Link to="/agents" className="group flex w-fit items-center gap-1 font-medium text-accent transition-colors hover:text-cyan-800">
-                  El Vendedor en detalle
+                <Link
+                  to="/empleados-digitales"
+                  className="group flex w-fit items-center gap-1 font-medium text-accent transition-colors hover:text-cyan-800"
+                >
+                  Empleados digitales
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
               </nav>
@@ -107,11 +110,11 @@ const Footer = ({ variant = "light" }: FooterProps) => {
           <div>
             <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-slate-500">Explorar</p>
             <nav className="flex flex-col gap-3 text-sm">
-              <a href="/#products" className="w-fit transition-colors hover:text-white">Empleados digitales</a>
-              <a href="/#how" className="w-fit transition-colors hover:text-white">Cómo trabajamos</a>
-              <a href="/#case" className="w-fit transition-colors hover:text-white">Caso real</a>
+              <a href="/#services" className="w-fit transition-colors hover:text-white">Servicios</a>
+              <a href="/#framework" className="w-fit transition-colors hover:text-white">Framework</a>
+              <a href="/#cases" className="w-fit transition-colors hover:text-white">Casos de éxito</a>
               <a href="/#team" className="w-fit transition-colors hover:text-white">Equipo</a>
-              <a href="/#blog" className="w-fit transition-colors hover:text-white">Blog</a>
+              <Link to="/empleados-digitales" className="w-fit transition-colors hover:text-white">Empleados digitales</Link>
             </nav>
           </div>
 

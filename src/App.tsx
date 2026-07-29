@@ -9,6 +9,7 @@ import ComoEmpezar from "./pages/blog/ComoEmpezar";
 import CincoFormas from "./pages/blog/CincoFormas";
 import Contact from "./pages/Contact";
 import AgentsLanding from "./pages/AgentsLanding";
+import EmpleadosDigitales from "./pages/EmpleadosDigitales";
 import ScrollToAnchor from "./components/ScrollToAnchor";
 import WhatsAppButton from "./components/WhatsAppButton";
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/blog/cinco-formas" element={<CincoFormas />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/agents" element={<AgentsLanding />} />
+          <Route path="/empleados-digitales" element={<EmpleadosDigitales />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
