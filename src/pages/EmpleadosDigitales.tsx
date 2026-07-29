@@ -21,10 +21,9 @@ const links = [
   { label: "FAQ", id: "faq" },
 ];
 
-/** Landing dedicada a vender empleados digitales. Usa su propia paleta
- *  (.theme-landing) para no alterar la marca corporativa de la home. */
+/** Landing dedicada a vender empleados digitales. */
 const EmpleadosDigitales = () => (
-  <div className="theme-landing min-h-screen bg-background text-foreground">
+  <div className="min-h-screen bg-background text-foreground">
     <SmoothScroll />
     <Navbar
       links={links}

@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Building2, Calendar, Check, CheckCheck, Database, FileText, MessageCircle, UserRound } from "lucide-react";
 import SectionIntro from "@/components/fx/SectionIntro";
+import { BentoCard as Card, BentoArt as Art } from "@/components/fx/BentoCard";
 import { Stagger, StaggerItem } from "@/components/fx/Reveal";
 
 /* ————— Marcas de las herramientas que ya usa el cliente ————— */
@@ -78,45 +78,6 @@ const systems = [
   { Icon: UserRound, label: "Tu CRM" },
   { Icon: Database, label: "Tus datos" },
 ];
-
-/* ————— Card base: arte a sangre completa, título flotando encima ————— */
-
-interface CardProps {
-  title: string;
-  kicker: string;
-  tone: "cyan" | "ink" | "pale" | "slate" | "navy";
-  children: ReactNode;
-  className?: string;
-  big?: boolean;
-}
-
-const tones: Record<CardProps["tone"], { bg: string; title: string; kicker: string }> = {
-  cyan: { bg: "bg-[#0E7490]", title: "text-white", kicker: "text-cyan-100/70" },
-  navy: { bg: "bg-[#0B1424]", title: "text-white", kicker: "text-slate-400" },
-  ink: { bg: "bg-[#0F172A]", title: "text-white", kicker: "text-slate-400" },
-  slate: { bg: "bg-slate-700", title: "text-white", kicker: "text-slate-400" },
-  pale: { bg: "bg-slate-100", title: "text-foreground", kicker: "text-slate-500" },
-};
-
-const Card = ({ title, kicker, tone, children, className, big }: CardProps) => {
-  const t = tones[tone];
-  return (
-    <div
-      className={`relative h-full overflow-hidden rounded-2xl ${t.bg} ${big ? "min-h-[30rem]" : "min-h-[15rem]"} ${className ?? ""}`}
-    >
-      <div className={`absolute inset-x-0 top-0 z-10 ${big ? "p-5" : "p-4"}`}>
-        <p className={`font-display font-bold leading-snug ${big ? "text-xl" : "text-lg"} ${t.title}`}>{title}</p>
-        <p className={`text-xs ${t.kicker}`}>{kicker}</p>
-      </div>
-      <div className="absolute inset-0">{children}</div>
-    </div>
-  );
-};
-
-/** Contenedor del arte: se ancla abajo y deja aire para el título. */
-const Art = ({ children, className }: { children: ReactNode; className?: string }) => (
-  <div className={`flex h-full flex-col justify-end p-4 pt-[4.5rem] ${className ?? ""}`}>{children}</div>
-);
 
 /* ————— Artes de cada tarjeta ————— */
 
