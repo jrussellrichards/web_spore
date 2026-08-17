@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/home/Hero";
 import ClientsStrip from "@/components/ClientsStrip";
 import Capabilities from "@/components/home/Capabilities";
+import TeamEnablement from "@/components/home/TeamEnablement";
 import Method from "@/components/home/Method";
 import Impact from "@/components/home/Impact";
 import Team from "@/components/home/Team";
@@ -27,6 +28,7 @@ const Index = () => (
     <Hero />
     <ClientsStrip />
     <Capabilities />
+    <TeamEnablement />
     <div className="hairline mx-auto max-w-5xl" />
     <Method />
     <Impact />

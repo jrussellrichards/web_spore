@@ -33,7 +33,7 @@ export const BentoCard = ({ title, kicker, tone, children, className, big }: Ben
       className={cn(
         "relative h-full overflow-hidden rounded-2xl transition-shadow duration-300",
         t.bg,
-        big ? "min-h-[30rem]" : "min-h-[15rem]",
+        big ? "min-h-[30rem]" : "min-h-[16.5rem]",
         className,
       )}
     >
@@ -46,9 +46,13 @@ export const BentoCard = ({ title, kicker, tone, children, className, big }: Ben
   );
 };
 
-/** Contenedor del arte: se ancla abajo y deja aire para el título flotante. */
+/**
+ * Contenedor del arte: se ancla abajo y reserva arriba el alto del título
+ * flotante. `pt-28` cubre un título de dos líneas más su bajada — si se usan
+ * títulos más largos, hay que subirlo o el arte queda debajo del texto.
+ */
 export const BentoArt = ({ children, className }: { children: ReactNode; className?: string }) => (
-  <div className={cn("flex h-full flex-col justify-end p-4 pt-[4.5rem]", className)}>{children}</div>
+  <div className={cn("flex h-full flex-col justify-end p-4 pt-28", className)}>{children}</div>
 );
 
 export default BentoCard;

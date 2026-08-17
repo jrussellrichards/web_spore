@@ -1,8 +1,6 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import SectionIntro from "@/components/fx/SectionIntro";
-import Counter from "@/components/fx/Counter";
-import { Reveal, Stagger, StaggerItem } from "@/components/fx/Reveal";
+import { Stagger, StaggerItem } from "@/components/fx/Reveal";
 
 const steps = [
   {
@@ -25,50 +23,6 @@ const steps = [
   },
 ];
 
-/** Medidor radial: el 85% de los proyectos de IA que no llegan a nada. */
-const FailureGauge = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const R = 84;
-  const C = 2 * Math.PI * R;
-
-  return (
-    <div ref={ref} className="relative mx-auto w-full max-w-[17rem]">
-      <svg viewBox="0 0 200 200" className="w-full -rotate-90" aria-hidden>
-        <circle cx="100" cy="100" r={R} fill="none" stroke="rgba(148,163,184,0.2)" strokeWidth="10" />
-        <motion.circle
-          cx="100"
-          cy="100"
-          r={R}
-          fill="none"
-          stroke="url(#gaugeGrad)"
-          strokeWidth="10"
-          strokeLinecap="round"
-          strokeDasharray={C}
-          initial={{ strokeDashoffset: C }}
-          animate={inView ? { strokeDashoffset: C * 0.15 } : {}}
-          transition={{ duration: 2, ease: [0.33, 1, 0.68, 1], delay: 0.3 }}
-        />
-        <defs>
-          <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#f97316" />
-            <stop offset="100%" stopColor="#ef4444" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <p className="font-display text-5xl font-bold text-foreground">
-          <Counter value={85} suffix="%" duration={2.2} />
-        </p>
-        <p className="mt-1 max-w-[10rem] text-center font-mono text-[0.6rem] uppercase tracking-wider text-slate-500">
-          de los proyectos de IA fracasan
-        </p>
-        <p className="mt-1 font-mono text-[0.56rem] text-slate-400">fuente: Gartner</p>
-      </div>
-    </div>
-  );
-};
-
 const Method = () => (
   <section id="framework" className="relative overflow-hidden py-24">
     <div
@@ -77,32 +31,11 @@ const Method = () => (
     />
 
     <div className="container relative z-10 mx-auto px-4">
-      {/* El problema, antes del método */}
-      <div className="mx-auto mb-24 grid max-w-5xl items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
-        <Reveal y={40}>
-          <FailureGauge />
-        </Reveal>
-        <Reveal delay={0.15}>
-          <p className="font-script text-3xl font-semibold text-accent md:text-4xl">El problema</p>
-          <h2 className="mt-2 font-display text-3xl font-bold leading-[1.15] tracking-tight text-foreground md:text-4xl">
-            La mayoría de la IA empresarial{" "}
-            <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-              nunca llega a producción.
-            </span>
-          </h2>
-          <p className="mt-5 text-lg leading-relaxed text-slate-600">
-            Se elige la tecnología antes que el problema. Nosotros invertimos el orden: si no hay un
-            caso de negocio rentable y medible a la vista,{" "}
-            <span className="font-semibold text-foreground">no implementamos</span>.
-          </p>
-        </Reveal>
-      </div>
-
       <SectionIntro
         eyebrow="Nuestro método"
-        title="Framework de"
-        titleAccent="impacto IA."
-        subtitle="Tu garantía de valor: cada etapa tiene entregables concretos y un criterio para seguir o parar."
+        title="Casi siempre se elige la tecnología"
+        titleAccent="antes que el problema."
+        subtitle="Nosotros invertimos el orden. Cada etapa tiene entregables concretos y un criterio para seguir o parar — y si no hay un caso de negocio rentable a la vista, no implementamos."
         className="mb-14"
       />
 

@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/fx/Reveal";
 import liventusLogo from "@/assets/clients/liventus.png";
+import udecLogo from "@/assets/clients/universidad-concepcion.png";
 import deSalYEstrellaLogo from "@/assets/clients/de-sal-y-estrella.png";
 import codelcoLogo from "@/assets/clients/codelco.svg";
 import puntoTicketLogo from "@/assets/clients/puntoticket.svg";
@@ -14,13 +15,16 @@ import puntoTicketLogo from "@/assets/clients/puntoticket.svg";
 type Client = { name: string; logo?: string; height?: number; opacity?: number };
 
 const clients: Client[] = [
-  { name: "Codelco", logo: codelcoLogo, height: 23 },
+  { name: "Codelco", logo: codelcoLogo, height: 21 },
   { name: "Constructora del Mar" },
   { name: "Liventus", logo: liventusLogo, height: 33 },
   { name: "TruthInvestment" },
+  { name: "Universidad de Concepción", logo: udecLogo, height: 25 },
   { name: "Museo Naturalia" },
-  { name: "De Sal y Estrella", logo: deSalYEstrellaLogo, height: 34, opacity: 0.7 },
+  { name: "De Sal y Estrella", logo: deSalYEstrellaLogo, height: 34, opacity: 0.85 },
+  { name: "Transportes Delfos" },
   { name: "Puntoticket", logo: puntoTicketLogo, height: 21 },
+  { name: "Terrazul" },
 ];
 
 // La pista lleva 4 copias y se desplaza -50%: el corte cae siempre sobre una

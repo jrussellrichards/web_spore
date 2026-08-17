@@ -1,15 +1,17 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Check, FileText, GraduationCap, ScanLine } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, FileText, ScanLine } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionIntro from "@/components/fx/SectionIntro";
 import { BentoCard as Card, BentoArt as Art } from "@/components/fx/BentoCard";
 import { Stagger, StaggerItem } from "@/components/fx/Reveal";
 
-const secondary = [
-  "Estrategia y priorización de iniciativas IA",
-  "MLOps: despliegue y monitoreo",
-  "Evaluación de madurez de datos",
-  "Gobernanza y prácticas responsables",
+const secondary: { label: string; href?: string }[] = [
+  { label: "Ordenamos tus datos" },
+  { label: "Conectamos tus sistemas" },
+  // Se suma a lo anterior, no lo reemplaza: por eso vive en esta lista.
+  { label: "Capacitamos a tu equipo en IA", href: "#equipo-ia" },
+  { label: "Mantenemos lo que construimos" },
+  { label: "Te decimos por dónde partir" },
 ];
 
 /** RAG: la respuesta sale de un documento tuyo, con la fuente a la vista. */
@@ -41,7 +43,6 @@ const VisionArt = () => (
       {[
         { k: "RUT", v: "76.383.936-2" },
         { k: "Total", v: "$1.284.900" },
-        { k: "Vence", v: "12/08" },
       ].map((f, i) => (
         <motion.div
           key={f.k}
@@ -64,10 +65,12 @@ const VisionArt = () => (
 /** Agentes: la tarjeta destacada que lleva a la landing. */
 const AgentsArt = () => (
   <div className="relative h-full">
-    <div aria-hidden className="absolute left-1/2 top-[44%] h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-3xl" />
+    <div
+      aria-hidden
+      className="absolute left-1/2 top-[44%] h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-3xl"
+    />
 
-    <div className="flex h-full flex-col justify-center px-5 pb-24 pt-20">
-      {/* Conversación */}
+    <div className="flex h-full flex-col justify-center px-5 pb-24 pt-36">
       <div className="space-y-2">
         <div className="w-fit max-w-[85%] rounded-xl rounded-tl-none bg-white/15 px-3 py-2 text-[0.74rem] text-white backdrop-blur-sm">
           ¿Me pueden cotizar 40 unidades?
@@ -83,7 +86,6 @@ const AgentsArt = () => (
         </motion.div>
       </div>
 
-      {/* Tareas que ejecuta */}
       <div className="mt-4 space-y-1.5">
         {["Consultó tu stock real", "Generó el documento", "Agendó el seguimiento"].map((t, i) => (
           <motion.div
@@ -101,7 +103,6 @@ const AgentsArt = () => (
       </div>
     </div>
 
-    {/* Pie con enlace a la landing */}
     <div className="absolute inset-x-0 bottom-0 p-4">
       <div className="flex items-center justify-between rounded-xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-sm transition-colors group-hover/cap:bg-white/20">
         <span className="text-[0.72rem] font-medium text-white">Conoce los 3 empleados digitales</span>
@@ -153,35 +154,42 @@ const ModelsArt = () => (
   </Art>
 );
 
-/** Capacitación: el equipo del cliente subiendo de nivel. */
-const TrainingArt = () => (
+/** Software a medida: la pantalla que la empresa no encuentra en ningún lado. */
+const SoftwareArt = () => (
   <Art>
-    <div className="rounded-xl bg-white p-3 shadow-sm">
-      <div className="mb-2.5 flex items-center gap-2">
-        <GraduationCap className="h-4 w-4 text-accent" />
-        <span className="text-[0.7rem] font-medium text-slate-700">Tu equipo, autónomo</span>
+    <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+      <div className="flex items-center gap-1.5 border-b border-slate-100 px-3 py-2">
+        <span className="h-2 w-2 rounded-full bg-slate-200" />
+        <span className="h-2 w-2 rounded-full bg-slate-200" />
+        <span className="h-2 w-2 rounded-full bg-slate-200" />
+        <span className="ml-1.5 truncate font-mono text-[0.55rem] text-slate-400">tu-operación / panel</span>
       </div>
-      {[
-        { t: "Prompting aplicado", p: 100 },
-        { t: "Uso de datos", p: 80 },
-        { t: "Automatizaciones", p: 60 },
-      ].map((r, i) => (
-        <div key={r.t} className="mb-2 last:mb-0">
-          <div className="mb-1 flex items-center justify-between">
-            <span className="text-[0.64rem] text-slate-500">{r.t}</span>
-            <span className="font-mono text-[0.58rem] text-slate-400">{r.p}%</span>
-          </div>
-          <div className="h-1.5 overflow-hidden rounded-full bg-slate-100">
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: `${r.p}%` }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 + i * 0.2, duration: 0.9, ease: [0.33, 1, 0.68, 1] }}
-              className="h-full rounded-full bg-gradient-to-r from-accent to-cyan-400"
-            />
-          </div>
-        </div>
-      ))}
+      <div className="space-y-1.5 p-3">
+        {[
+          { w: "w-full", d: 0.2 },
+          { w: "w-4/5", d: 0.35 },
+          { w: "w-2/3", d: 0.5 },
+        ].map((r) => (
+          <motion.div
+            key={r.w}
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: r.d, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+            className={`h-3 origin-left rounded bg-slate-100 ${r.w}`}
+          />
+        ))}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.9 }}
+          className="flex items-center gap-1.5 pt-1"
+        >
+          <Check className="h-3 w-3 shrink-0 text-emerald-500" />
+          <span className="text-[0.64rem] text-slate-500">hecho para cómo trabajas tú</span>
+        </motion.div>
+      </div>
     </div>
   </Art>
 );
@@ -190,20 +198,20 @@ const Capabilities = () => (
   <section id="capabilities" className="relative py-24">
     <div className="container mx-auto px-4">
       <SectionIntro
-        eyebrow="Qué hacemos"
-        title="Todo lo que hay entre tus datos"
-        titleAccent="y un resultado."
-        subtitle="Cinco frentes que solemos combinar en un mismo proyecto. Empezamos por el que te mueve la aguja."
+        eyebrow="Qué resolvemos"
+        title="¿Cuánto de tu semana"
+        titleAccent="se va en tareas que se repiten?"
+        subtitle="Responder lo mismo, digitar documentos, armar el reporte de siempre. Casi siempre hay una parte que puede hacerse sola — y otra que conviene dejar en manos de una persona."
         className="mb-14"
       />
 
       <Stagger className="mx-auto grid max-w-6xl gap-3 lg:grid-cols-3" gap={0.08}>
         {/* Izquierda */}
         <StaggerItem className="flex flex-col gap-3">
-          <Card title="RAG y asistentes de conocimiento" kicker="Tu documentación, respondiendo sola" tone="navy">
+          <Card title="Tu equipo responde siempre lo mismo" kicker="Asistente entrenado con tu documentación" tone="navy">
             <RagArt />
           </Card>
-          <Card title="Visión computacional y OCR" kicker="Documentos que se leen solos" tone="pale">
+          <Card title="Digitar documentos te consume horas" kicker="Visión computacional y OCR" tone="pale">
             <VisionArt />
           </Card>
         </StaggerItem>
@@ -213,8 +221,8 @@ const Capabilities = () => (
           <Link to="/empleados-digitales" className="group/cap block h-full">
             <Card
               big
-              title="Agentes autónomos"
-              kicker="Atienden, venden y ejecutan tareas completas."
+              title="Atender clientes te tiene atrapado"
+              kicker="Agentes que atienden, venden y ejecutan tareas completas."
               tone="cyan"
               className="bg-gradient-to-br from-[#0E7490] via-[#0E7490] to-[#134E5E] hover:shadow-[0_24px_60px_-24px_rgba(14,116,144,0.6)]"
             >
@@ -225,27 +233,38 @@ const Capabilities = () => (
 
         {/* Derecha */}
         <StaggerItem className="flex flex-col gap-3">
-          <Card title="Modelos analíticos" kicker="Segmentación, forecast y recomendación" tone="ink">
+          <Card title="Decides a ojo lo que podrías anticipar" kicker="Modelos de forecast y segmentación" tone="ink">
             <ModelsArt />
           </Card>
-          <Card title="Capacitación y adopción" kicker="Para que no dependas de nosotros" tone="pale">
-            <TrainingArt />
+          <Card title="El software que necesitas no existe" kicker="Desarrollo a medida" tone="pale">
+            <SoftwareArt />
           </Card>
         </StaggerItem>
 
         {/* Servicios de soporte */}
         <StaggerItem className="lg:col-span-3">
-          <div className="flex flex-col items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white px-6 py-5 md:flex-row">
+          <div className="rounded-2xl border border-slate-200 bg-white px-6 py-5">
             <div className="flex flex-wrap items-center justify-center gap-2 md:justify-start">
               <span className="mr-1 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-slate-400">además</span>
-              {secondary.map((s) => (
-                <span
-                  key={s}
-                  className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-500"
-                >
-                  {s}
-                </span>
-              ))}
+              {secondary.map((s) =>
+                s.href ? (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    className="group inline-flex items-center gap-1 rounded-full border border-cyan-600/25 bg-cyan-50 px-3 py-1 text-xs font-medium text-accent transition-colors hover:border-accent/50"
+                  >
+                    {s.label}
+                    <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                  </a>
+                ) : (
+                  <span
+                    key={s.label}
+                    className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-500"
+                  >
+                    {s.label}
+                  </span>
+                ),
+              )}
             </div>
           </div>
         </StaggerItem>

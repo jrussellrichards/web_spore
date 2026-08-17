@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { Link } from "react-router-dom";
 import { openCalendly } from "@/lib/calendly";
 import Counter from "@/components/fx/Counter";
 
@@ -113,7 +112,9 @@ const Hero = () => (
     />
 
     <div className="container relative z-10 mx-auto px-4">
-      <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+      {/* El texto se lleva más ancho que el panel: el titular es largo y el panel
+          ya está topado en max-w-md, así que no pierde nada. */}
+      <div className="grid items-center gap-14 lg:grid-cols-[1.3fr_0.7fr]">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -123,7 +124,7 @@ const Hero = () => (
           >
             <span className="h-2 w-2 rounded-full bg-live" />
             <span className="font-mono text-xs tracking-wide text-accent">
-              Datos e IA aplicada · Chile y LATAM
+              Tecnología a medida para empresas · Chile y LATAM
             </span>
           </motion.div>
 
@@ -131,16 +132,16 @@ const Hero = () => (
             variants={headline}
             initial="hidden"
             animate="show"
-            className="font-display text-[2.6rem] font-bold leading-[1.05] tracking-tight text-foreground md:text-6xl xl:text-7xl"
+            className="font-display text-[2.3rem] font-bold leading-[1.05] tracking-tight text-foreground md:text-5xl xl:text-6xl"
           >
             <span className="block overflow-hidden pb-1">
               <motion.span variants={lineReveal} className="block">
-                Tus datos ya saben
+                No partimos por la IA.
               </motion.span>
             </span>
             <span className="block overflow-hidden pb-2">
               <motion.span variants={lineReveal} className="text-gradient block">
-                qué hacer.
+                Partimos por tu problema.
               </motion.span>
             </span>
           </motion.h1>
@@ -151,8 +152,9 @@ const Hero = () => (
             transition={{ delay: 0.5, duration: 0.8 }}
             className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 md:text-xl"
           >
-            Ordenamos tu información, construimos los modelos y ponemos agentes a trabajar con
-            ella. Ingeniería de datos e IA que llega a producción, no a una presentación.
+            A veces la respuesta es un agente; a veces, ordenar tus datos o un software simple.
+            Te proponemos lo que necesitas,{" "}
+            <span className="font-semibold text-foreground">no lo más caro que te podamos vender</span>.
           </motion.p>
 
           <motion.div
@@ -168,12 +170,12 @@ const Hero = () => (
               Agenda un diagnóstico
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
-            <Link
-              to="/empleados-digitales"
+            <a
+              href="#capabilities"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/70 px-7 py-3.5 text-base font-medium text-foreground backdrop-blur-sm transition-all duration-300 hover:border-accent/50 hover:text-accent"
             >
-              Ver empleados digitales
-            </Link>
+              Ver qué resolvemos
+            </a>
           </motion.div>
 
           <motion.div
@@ -183,9 +185,9 @@ const Hero = () => (
             className="mt-10 flex flex-wrap gap-x-8 gap-y-3"
           >
             {[
-              "7 años llevando modelos a producción",
-              "Equipo senior de punta a punta",
-              "Impacto medido en el negocio",
+              "Te decimos si no vale la pena hacerlo",
+              "Precio fijo, acordado antes de partir",
+              "Lo dejamos funcionando, no en un informe",
             ].map((t) => (
               <div key={t} className="flex items-center gap-2 font-mono text-xs text-slate-500">
                 <span className="h-1 w-1 rounded-full bg-accent" />

@@ -148,7 +148,9 @@ export default {
         "meteor-effect": "meteor 5s linear infinite",
         spotlight: "spotlight 2s ease .75s 1 forwards",
         marquee: "marquee 42s linear infinite",
-        "scroll-left": "scroll-left 45s linear infinite",
+        // Duración calibrada a ~60 px/s con la cantidad actual de clientes.
+        // Si se agregan o quitan logos, ajustar para mantener esa velocidad.
+        "scroll-left": "scroll-left 62s linear infinite",
         shimmer: "shimmer 6s linear infinite",
         "pulse-soft": "pulse-soft 3s ease-in-out infinite",
         aurora: "aurora 14s ease-in-out infinite",
